@@ -34,6 +34,10 @@
           <td>password : </td>   
           <td><form:input path="password" type="password" /></td>  
          </tr>
+         <tr>    
+          <td>Mobile : </td>   
+          <td><form:input path="phone" type="number" /></td>  
+         </tr>
           <tr>    
           <td>Address : </td>   
           <td><form:input path="address"  /></td>  

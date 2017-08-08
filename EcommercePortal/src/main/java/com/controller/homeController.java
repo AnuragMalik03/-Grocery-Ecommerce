@@ -89,7 +89,7 @@ public class homeController {
 	
 	
 	@RequestMapping(value="/saveregister" , method= RequestMethod.POST)
-	public ModelAndView saveregister(@ModelAttribute("user") User user, BindingResult result ){
+	public ModelAndView saveregister(@Valid @ModelAttribute("user") User user, BindingResult result ){
 		
 		ModelAndView mav = new ModelAndView();
 		

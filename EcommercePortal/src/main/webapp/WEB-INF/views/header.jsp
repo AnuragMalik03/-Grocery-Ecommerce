@@ -50,7 +50,7 @@
             
             </ul>
             
-            <c:if test="request.hasrole('ROLE_ADMIN')">
+            <c:if test="request.hasRole('ROLE_ADMIN')">
                <li><a href="<c:url value="/admin/adding" />">Admin</a></li>
             <li><a href="<c:url value="/admin/productList" />">Admin List</a></li>
             </c:if>

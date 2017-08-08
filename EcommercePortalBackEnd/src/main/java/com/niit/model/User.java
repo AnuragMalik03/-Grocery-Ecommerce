@@ -2,6 +2,10 @@ package com.niit.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
@@ -16,11 +20,19 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@Email(message="Enter Valid Email")
+	@NotEmpty(message="Enter the Email")
 	private String email;
+	@NotEmpty(message="Enter the name")
 	private String name;
+	@NotNull(message="Password is Null")
 	private String password;
 	private String role;
+	@NotNull(message="Adderess is Null")
 	private String address;
+	@Pattern(regexp="[\\d]{10}" , message="Plese Enter Digits")
+	@NotNull
+	@Size(min=8 , max=10 , message="Enter Correct Phone")
 	private String phone;
 	private boolean enabled;
 	
