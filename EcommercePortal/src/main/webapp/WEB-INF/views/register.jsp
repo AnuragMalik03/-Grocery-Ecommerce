@@ -12,6 +12,17 @@
   
 
 <title>Registration From</title>
+<style type="text/css">
+.err{
+color: red;
+}
+.err_bdr{
+border: 1px solid red;
+}
+.bdr{
+border : 1px solid gray;
+}
+</style>
 </head>
 <body>
  
@@ -30,12 +41,14 @@
                     <div class="col-md-6">
                      
                         <div class="form-group">
+                        <form:errors path="email" cssClass="err"/>
                             <label class="control-label">Email</label>
                             <form:input  maxlength="50" type="text" path="email" required="required" class="form-control" placeholder="Enter Email"  />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
+                        <form:errors path="name" cssClass="err"/>
                             <label class="control-label">Name</label>
                             <form:input  maxlength="20" type="text"  path="name" required="required" class="form-control" placeholder="Enter Name"  />
                         </div>
@@ -43,12 +56,15 @@
                    
                     <div class="col-md-6">
                         <div class="form-group">
+                        
                             <label class="control-label">Password </label>
-                            <form:input maxlength="10" type="password" path="password" class="form-control" placeholder="********" />
+                            <form:errors path="password" cssClass="err"/>
+                            <form:input  maxlength="15" type="password" path="password" class="form-control" placeholder="********" />
                         </div>
                     </div> 
 					<div class="col-md-6">
                         <div class="form-group">
+                        <form:errors path="phone" cssClass="err"/>
                             <label class="control-label">Phone Number</label>
                             <form:input  maxlength="14" type="number" path="phone" required="required" class="form-control" placeholder="ex:9874563214"  />
                         </div>
@@ -78,10 +94,11 @@
                    					
 					 <div class="col-md-6">
                         <div class="form-group">
+                        <form:errors path="securityQ" cssClass="err"/>
                             <label for="subject">
                                 Security Question</label>
                             <form:select id="subject"  path="securityQ" class="form-control" required="required">
-                                <option value="na" selected="">Choose One:</option>
+                                <option value="" selected="">Choose One:</option>
                                 <option value="petname">Pet name</option>
                                 <option value="first teacher">First teacher name</option>
                                 <option value="vegi">favourite vegitable</option>
@@ -92,6 +109,7 @@
                     
                     <div class="col-md-6">
                         <div class="form-group">
+                        <form:errors path="securityA" cssClass="err"/>
                             <label class="control-label">Answer</label>
                             <form:input  maxlength="15" type="text" path="securityA" required="required" class="form-control" placeholder="Enter Answer"  />
                         </div>
@@ -99,6 +117,7 @@
 					
 					<div class="col-md-6">
                         <div class="form-group">
+                        
                             <label class="control-label">Role</label>
                             <form:input  maxlength="6" type="text" path="role" class="form-control" placeholder="Enter Role"  />
                         </div>

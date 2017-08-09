@@ -2,10 +2,13 @@ package com.niit.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.BatchSize;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
@@ -26,6 +29,7 @@ public class User implements Serializable {
 	@NotEmpty(message="Enter the name")
 	private String name;
 	@NotNull(message="Password is Null")
+	@Size(min=6 , max=12 , message="Password should be more than 6 characters and less than 12")
 	private String password;
 	private String role;
 	/*@NotNull(message="Adderess is Null")
