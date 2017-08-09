@@ -27,13 +27,14 @@
 	<th>Sr No.</th><th>PID</th><th>Name</th><th>Supplier</th><th>Category</th><th>Price</th><th style="width:15">Description</th>
 	<th>Image</th>
 	
-	<c:if test="${empty proList }"><tr><td colspan="9"  align="center">No Record Exists</td></tr></c:if>
-	<c:forEach var="c" varStatus="st" items="${proList }">
+	<c:if test="${empty productList }"><tr><td colspan="9"  align="center">No Record Exists</td></tr></c:if>
+	<c:forEach var="c" varStatus="st" items="${productList }">
 	<tr>
-	<td><c:out value="${c.count }"></c:out></td>
+	<td><c:out value="${st.count }"></c:out></td>
 	<td><c:out value="${c.id }"></c:out></td>
 	<td><c:out value="${c.name }"></c:out></td>
 	<td><c:out value="${c.supplier.supplierName }"></c:out></td>
+	<td><c:out value="${c.stock }"></c:out></td>
 	<td><c:out value="${c.category.name }"></c:out></td>
 	<td><c:out value="${c.price }"></c:out></td>
 	<td class="span2"><c:out value="${c.description }"></c:out></td>

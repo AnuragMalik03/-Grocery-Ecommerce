@@ -28,20 +28,18 @@ public class User implements Serializable {
 	@NotNull(message="Password is Null")
 	private String password;
 	private String role;
-	@NotNull(message="Adderess is Null")
-	private String address;
+	/*@NotNull(message="Adderess is Null")
+	private String address;*/
 	@Pattern(regexp="[\\d]{10}" , message="Plese Enter Digits")
 	@NotNull
 	@Size(min=8 , max=10 , message="Enter Correct Phone")
 	private String phone;
 	private boolean enabled;
+	@NotNull(message="Select your security Question")
+	private String securityQ;
+	@NotNull(message="Enter  your security Answer")
+	private String securityA;
 	
-	public boolean isEnabled() {
-		return enabled;
-	}
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
 	public String getEmail() {
 		return email;
 	}
@@ -66,18 +64,31 @@ public class User implements Serializable {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
 	public String getPhone() {
 		return phone;
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+	public String getSecurityQ() {
+		return securityQ;
+	}
+	public void setSecurityQ(String securityQ) {
+		this.securityQ = securityQ;
+	}
+	public String getSecurityA() {
+		return securityA;
+	}
+	public void setSecurityA(String securityA) {
+		this.securityA = securityA;
+	}
+	
 	
 	
 	}
