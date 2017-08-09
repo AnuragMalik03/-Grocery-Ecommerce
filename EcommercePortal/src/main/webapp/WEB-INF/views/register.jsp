@@ -103,9 +103,11 @@
                             <form:input  maxlength="6" type="text" path="role" class="form-control" placeholder="Enter Role"  />
                         </div>
                     </div>
+                    <br>
+                    <input class="btn btn-lg btn-primary nextBtn pull-right" type="submit" value="register" /> 
                     </form:form>
         </div>
-                <input type="submit" value="register" /> 
+                
 	 
                             
     
