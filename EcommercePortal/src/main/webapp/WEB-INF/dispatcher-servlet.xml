@@ -4,7 +4,7 @@ xmlns:mvc="http://www.springframework.org/schema/mvc"
 xmlns:context="http://www.springframework.org/schema/context"
 xsi:schemaLocation="
 http://www.springframework.org/schema/mvc 
-http://www.springframework.org/schema/mvc/spring-mvc.xsd
+https://www.springframework.org/mvc/spring-mvc-4.0.xsd
 http://www.springframework.org/schema/beans 
 http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/context
@@ -16,6 +16,7 @@ https://www.springframework.org/context/spring-context.xsd" >
 <context:component-scan base-package="com.niit.*"/>
 
 <mvc:resources mapping="/resources/**"  location ="/resources/"/>
+
 
 
 <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

@@ -110,9 +110,9 @@ public class homeController {
 	public ModelAndView productcustList(@RequestParam("cid") int cid)
 	{
 		System.out.println(cid);
-		ModelAndView mav = new ModelAndView();
+		ModelAndView mav = new ModelAndView("productCustList");
 		mav.addObject("productList" , productDaoImpl.getProdById(cid));
-		mav.setViewName("ProductCustList");
+		//mav.setViewName("");
 		return mav;
 		
 	}
@@ -125,5 +125,16 @@ public class homeController {
 		
 	}
 	
+	@RequestMapping("/productDetail/{cid}")
+	public ModelAndView productDet(@RequestParam("cid") int cid)
+	{
+		
+		ModelAndView mav = new ModelAndView();
+		Product product = productDaoImpl.findById(cid);
+		mav.addObject("product" , product);
+		mav.setViewName("productDetail");
+		return mav;
+		
+	}
 
 }

@@ -40,8 +40,10 @@
 	<td class="span2"><c:out value="${c.description }"></c:out></td>
 	<td><img src="${pageContext.request.contextPath }/resources/${c.imgName}" height="60px" width="60px"></td>
 	
-	
-	
+	<td>
+	<c:set var="contextRoot" value="${pageContext.request.contextPath }"></c:set>
+	<a class="btn btn-info" role="button"  href="<c:url value="/productDetail/${c.id }"/>">Details</a>
+	</td>
 	
 	</tr>
 	</c:forEach>
