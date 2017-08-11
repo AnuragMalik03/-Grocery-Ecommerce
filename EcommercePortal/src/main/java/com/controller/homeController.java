@@ -38,6 +38,8 @@ public class homeController {
 	SupplierDaoImpl supplierDaoImpl;
 	@Autowired
 	ProductDaoImpl productDaoImpl;
+	@Autowired
+	BrandDaoImpl brandDaoImpl;
 	
 	
 	@RequestMapping(value="/register", method = RequestMethod.GET)
@@ -122,6 +124,7 @@ public class homeController {
 		m.addAttribute("catList" , categoryDaoImpl.retrieve());
 		m.addAttribute("satList" , supplierDaoImpl.retrieve());
 		m.addAttribute("proList" , productDaoImpl.retrieve());
+		m.addAttribute("broList" , brandDaoImpl.retrieve());
 		
 	}
 	

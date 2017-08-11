@@ -34,6 +34,7 @@
 								<li class="active"><a href="#tab1primary" data-toggle="tab">Category</a></li>
 								<li><a href="#tab2primary" data-toggle="tab">Supplier</a></li>
 								<li><a href="#tab3primary" data-toggle="tab">Products</a></li>
+								<li><a href="#tab4primary" data-toggle="tab">Brand</a></li>
 							</ul>
 						</div>
 
@@ -64,6 +65,32 @@
 									<h4 class="input-title">Supplier Name</h4>
 									<input class="form-control" type="text" name="supplierName"
 										required />
+									<button class="btn btn-lg btn-primary" type="submit">Save</button>
+									<button class="btn btn-lg btn-primary" type="reset">Cancel</button>
+
+								</form>
+
+							</div>
+							
+							<div class="tab-pane fade" id="tab4primary">
+								<form method="post" action="<c:url value="/admin/savebrand"/>"
+										class="form-signin" enctype="multipart/form-data">
+									<!-- <span id="reauth-email" class="reauth-email"></span>
+									<h4 class="input-title">Supplier ID</h4>
+									<input class="form-control" type="number" name="sid" required />
+									<h4 class="input-title">Supplier Name</h4>
+									<input class="form-control" type="text" name="supplierName"
+										required /> -->
+										<h4 class="input-title">Brand Name</h4>
+									<input class="form-control" type="text" name="brandName"
+										required />
+										<div class="fileinput fileinput-new" data-providers="fileinput">
+										<tr>
+											<td>Image</td>
+											<td><input class="form-control" type="file" name="file"	accept="image/*"></td>
+										</tr>
+
+									</div>
 									<button class="btn btn-lg btn-primary" type="submit">Save</button>
 									<button class="btn btn-lg btn-primary" type="reset">Cancel</button>
 
@@ -111,6 +138,16 @@
 												<option>----Supplier----</option>
 												<c:forEach items="${satList}" var="sate">
 													<option value="${sate.sid}">${sate.supplierName}</option>
+												</c:forEach>
+										</select>
+									</div>
+									<div class="form-group">
+										<td>Select Brand</td>
+										<td><select class="form-control" name="pBrand"
+											required>
+												<option>----Brand----</option>
+												<c:forEach items="${brdList}" var="bro">
+													<option value="${bro.bid}">${bro.brandName}</option>
 												</c:forEach>
 										</select>
 									</div>

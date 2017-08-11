@@ -34,6 +34,10 @@ private static final long serialVersionUID = 1L;
 	@ManyToOne
 	@JoinColumn(name="sid")
 	private Supplier supplier;
+	@ManyToOne
+	@JoinColumn(name="bid")
+	private Brand brand;
+
 
 	@Transient
 	MultipartFile pimage;
@@ -111,6 +115,16 @@ private static final long serialVersionUID = 1L;
 	public void setImgName(String imgName) {
 		this.imgName = imgName;
 	}
+	
+
+	public Brand getBrand() {
+		return brand;
+	}
+
+	public void setBrand(Brand brand) {
+		this.brand = brand;
+	}
+
 
 	
 	

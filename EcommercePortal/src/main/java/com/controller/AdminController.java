@@ -32,6 +32,8 @@ public class AdminController {
 	@Autowired
 	CategoryDaoImpl categoryDaoImpl;
 	@Autowired
+	BrandDaoImpl brandDaoImpl;
+	@Autowired
 	SupplierDaoImpl supplierDaoImpl;
 	@Autowired
 	ProductDaoImpl productDaoImpl;
@@ -67,12 +69,58 @@ public class AdminController {
 			return mav;
 		
 	}
+	@RequestMapping(value="/savebrand" , method=RequestMethod.POST)
+	public String saveBrand(HttpServletRequest request , @RequestParam("file") MultipartFile file){
+		
+		Brand brand=  new Brand();
+		brand.setBrandName(request.getParameter("brandName"));
+		/*prod.setPrice(Float.parseFloat(request.getParameter("pPrice")));
+		prod.setDescription(request.getParameter("pDescription"));
+		prod.setStock(Integer.parseInt(request.getParameter("pStock")));
+		prod.setCategory(categoryDaoImpl.findById(Integer.parseInt(request.getParameter("pCategory"))));
+		prod.setSupplier(supplierDaoImpl.findById(Integer.parseInt(request.getParameter("pSupplier"))));
+		prod.setBrand(brandDaoImpl.findById(Integer.parseInt(request.getParameter("pBrand"))));*/
+		
+		String filepath= request.getSession().getServletContext().getRealPath("/");
+		String filename = file.getOriginalFilename();
+		brand.setBimgName(filename);
+		brandDaoImpl.insertBrand(brand);
+		System.out.println("File path is" + filepath + " " + filename);
+		try {
+			byte  imagebyte[] = file.getBytes();
+			BufferedOutputStream fos = new BufferedOutputStream(new FileOutputStream(filepath+ "/resources/" + filename));
+			fos.write(imagebyte);
+			fos.close();			
+			
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}catch (Exception e){
+		e.printStackTrace();
+		}
+		
+		
+		return "index";
+		
+	}
+	/*@RequestMapping(value="/savebrand" , method=RequestMethod.POST)
+	public ModelAndView saveBrand(@RequestParam("bid") int bid, @RequestParam("brandName")  String  name ){
+		
+		ModelAndView mav = new ModelAndView();
+		Brand bd = new Brand();
+		    bd.setBid(bid);
+		    bd.setBrandName(name);
+		    brandDaoImpl.insertBrand(bd);
+			mav.setViewName("index");
+			return mav;
+		
+	}*/
 	
 	@ModelAttribute
 	public void addAttributes(Model m){
 		m.addAttribute("catList" , categoryDaoImpl.retrieve());
 		m.addAttribute("satList" , supplierDaoImpl.retrieve());
 		m.addAttribute("prodList" , productDaoImpl.retrieve());
+		m.addAttribute("brdList" , brandDaoImpl.retrieve());
 		
 	}
 	
@@ -86,6 +134,7 @@ public class AdminController {
 		prod.setStock(Integer.parseInt(request.getParameter("pStock")));
 		prod.setCategory(categoryDaoImpl.findById(Integer.parseInt(request.getParameter("pCategory"))));
 		prod.setSupplier(supplierDaoImpl.findById(Integer.parseInt(request.getParameter("pSupplier"))));
+		prod.setBrand(brandDaoImpl.findById(Integer.parseInt(request.getParameter("pBrand"))));
 		
 		String filepath= request.getSession().getServletContext().getRealPath("/");
 		String filename = file.getOriginalFilename();
@@ -132,6 +181,7 @@ public class AdminController {
 		mav.addObject("prod" , p);
 		mav.addObject("cList" , categoryDaoImpl.retrieve());
 		mav.addObject("sList" , supplierDaoImpl.retrieve());
+		mav.addObject("bList" , brandDaoImpl.retrieve());
 		mav.setViewName("updateProduct");
 		return mav;
 	}
@@ -145,6 +195,7 @@ public class AdminController {
 		String pname = request.getParameter("pName");
 		String pCat = request.getParameter("pCategory");
 		String pSup = request.getParameter("pSupplier");
+		String pBrd = request.getParameter("pBrand");
 		String pPrice = request.getParameter("pPrice");
 		String pStock = request.getParameter("pStock");
 		String pDesc = request.getParameter("pDescription");
@@ -157,6 +208,7 @@ public class AdminController {
 		prod2.setStock(Integer.parseInt(pStock));
 		prod2.setCategory(categoryDaoImpl.findById(Integer.parseInt(pCat)));
 		prod2.setSupplier(supplierDaoImpl.findById(Integer.parseInt(pSup)));
+		prod2.setBrand(brandDaoImpl.findById(Integer.parseInt(pBrd)));
 		
 		String filepath= request.getSession().getServletContext().getRealPath("/");
 		String filename = file.getOriginalFilename();

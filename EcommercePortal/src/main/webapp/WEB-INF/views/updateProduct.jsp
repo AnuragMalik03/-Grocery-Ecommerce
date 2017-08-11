@@ -100,6 +100,19 @@ body{
 			    					</div>
 			    				</div>
 			    				
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<div class="form-group">
+			    					<label class="cols-sm-2 control-label">Product Brand</label>
+			    					<%-- <select name="pSupplier" class="form-control input-sm">
+											<option value="0">----Select Supplier----</option> 
+												<c:forEach items="${satList}" var="sate"> 
+														<option value="${sate.sid}">${sate.supplierName}</option>
+												</c:forEach>
+									</select> --%>
+			    				 <input type="text" name="pStock" value="${prod.brand.brandName}"  class="form-control input-sm" disabled /> 
+			    					</div>
+			    				</div>
+			    				
 			    				<div class="form-group">
 			    			    <label class="cols-sm-2 control-label">Image</label>
 			    				<input  class="form-control input-sm" type="text" name="file" value="${prod.imgName }" disabled/>
@@ -174,9 +187,21 @@ body{
 			    					<div class="form-group">
 			    					<label class="cols-sm-2 control-label">Product supplier</label>
 			    					<select name="pSupplier" class="form-control input-sm">
-											<option value="0">----Select Supplier----</option> 
+											<option value="">----Select Supplier----</option> 
 												<c:forEach items="${satList}" var="sate"> 
 														<option value="${sate.sid}">${sate.supplierName}</option>
+												</c:forEach>
+									</select>
+			    						<%-- <input type="text" name="pStock" value="${prod.stock }"  class="form-control input-sm" required> --%>
+			    					</div>
+			    				</div>
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<div class="form-group">
+			    					<label class="cols-sm-2 control-label">Product Brand</label>
+			    					<select name="pSupplier" class="form-control input-sm">
+											<option value="">----Select Brand----</option> 
+												<c:forEach items="${brdList}" var="brand"> 
+														<option value="${brand.bid}">${brand.brandName}</option>
 												</c:forEach>
 									</select>
 			    						<%-- <input type="text" name="pStock" value="${prod.stock }"  class="form-control input-sm" required> --%>

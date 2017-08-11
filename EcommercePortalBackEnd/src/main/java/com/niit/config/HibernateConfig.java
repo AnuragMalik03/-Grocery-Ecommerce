@@ -55,6 +55,7 @@ sessionBuilder.addAnnotatedClass(User.class);
 sessionBuilder.addAnnotatedClass(Category.class);
 sessionBuilder.addAnnotatedClass(Product.class);
 sessionBuilder.addAnnotatedClass(Supplier.class);
+sessionBuilder.addAnnotatedClass(Brand.class);
 
 
 
@@ -91,6 +92,13 @@ return new ProductDaoImpl(sessionFactory);
 public SupplierDaoImpl getSupplierDAO(SessionFactory sessionFactory)
 {
 return new SupplierDaoImpl(sessionFactory);
+}
+
+@Autowired
+@Bean(name="BrandDaoImpl")
+public BrandDaoImpl getBrandDAO(SessionFactory sessionFactory)
+{
+return new BrandDaoImpl(sessionFactory);
 }
 
 
