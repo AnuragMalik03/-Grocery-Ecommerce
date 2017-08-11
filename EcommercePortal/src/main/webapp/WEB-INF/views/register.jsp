@@ -37,7 +37,7 @@ border : 1px solid gray;
 </head>
 <body>
  
-  <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
+  <jsp:include page="header.jsp"></jsp:include>
   
   <br>
   <br>

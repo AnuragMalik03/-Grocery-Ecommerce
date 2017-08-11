@@ -58,8 +58,8 @@
           <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Category<span class="caret"></span></a>
         <ul class="dropdown-menu">
-           <c:forEach items="${catList}" var="cata">
-			<li> <a href="${pageContext.request.contextPath}/productCustList?cid=${cata.cid}">${cata.name}</a></li>
+           <c:forEach items="${catList}" var="cat">
+			<li> <a href="${pageContext.request.contextPath}/productCustList?cid=${cat.cid}">${cat.name}</a></li>
 			</c:forEach>
         </ul>
       </li>

@@ -119,7 +119,7 @@ public class homeController {
 	
 	@ModelAttribute
 	public void addAttributes(Model m){
-		m.addAttribute("cataList" , categoryDaoImpl.retrieve());
+		m.addAttribute("catList" , categoryDaoImpl.retrieve());
 		m.addAttribute("satList" , supplierDaoImpl.retrieve());
 		m.addAttribute("proList" , productDaoImpl.retrieve());
 		

@@ -175,7 +175,7 @@ public class AdminController {
 		e.printStackTrace();
 		}
 		
-		mv.setViewName("redirect:/productList?update");
+		mv.setViewName("redirect:/admin/productList?update");
 		return mv;
 		
 	}

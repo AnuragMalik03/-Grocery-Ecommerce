@@ -69,7 +69,7 @@ public List<Product> retrieve(){
 	 Session session = sessionFactory.openSession();
 	 List<Product> products = null;
 		session.beginTransaction();
-		products= session.createQuery("from product where cid=" +cid).list();
+		products= session.createQuery("from Product where cid=" +cid).list();
 		session.getTransaction().commit();
 		return products;
  }
