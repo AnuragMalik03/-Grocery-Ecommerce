@@ -14,6 +14,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="assets/js/fakeloader.min.js"></script>
+  	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  
   
      <style>
             .section-header .separator {
@@ -170,8 +172,25 @@
 
 <div id="fakeLoader"></div>
 <jsp:include page="header.jsp"></jsp:include>
+<br>
+<br>
+<br>
 <div class="container">
-  <h2>Carousel Example</h2>  
+  
+  
+  <div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu">
+    <li><a href="#">HTML</a></li>
+    <li><a href="#">CSS</a></li>
+    <li><a href="#">JavaScript</a></li>
+  </ul>
+</div>
+
+<br>
+<br>
+<br>
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -183,7 +202,7 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
       <div class="item active">
-        <img src="https://s.yimg.com/fz/api/res/1.2/bazACWck83_4li0hyoZY2A--/YXBwaWQ9c3JjaGRkO2g9MTA4MDtxPTk1O3c9MTkyMA--/http://i.imgur.com/wbgk6wd.jpg" alt="Los Angeles" style="width:100%;">
+        <img src="assets/images/music.jpg" alt="Los Angeles" style="width:100%;">
       </div>
 
       <div class="item">
