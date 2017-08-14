@@ -1,3 +1,4 @@
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +9,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-   	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
    
   
   </head>
@@ -59,8 +60,8 @@
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Category<span class="caret"></span></a>
         <ul class="dropdown-menu">
            <c:forEach items="${catList}" var="cat">
-			<li> <a href="${pageContext.request.contextPath}/productCustList?cid=${cat.cid}">${cat.name}</a></li>
-			</c:forEach>
+                                         <li> <a href="${pageContext.request.contextPath}/productCustList?cid=${cat.cid}">${cat.name}</a></li>
+                                         </c:forEach>
         </ul>
       </li>
            
@@ -68,7 +69,7 @@
             
             
           
-          <sec:authorize access="hasAuthority('ROLE_ADMIN')">
+          <security:authorize access="hasAuthority('ROLE_ADMIN')">
             <ul class="nav navbar-nav navbar-right">
             
             <c:if test="${pageContext.request.userPrincipal.name!=null }">
@@ -80,14 +81,14 @@
             </c:if>
             
             </ul>
-            </sec:authorize>
+            </security:authorize>
           
             
            <li><a class="page-scroll" href="<c:url value="/about" />">About</a></li>
             <li><a class="page-scroll" href="<c:url value="/contact" />">Contact Us</a></li>
             
           </ul>
-        </div>   			      		 
+        </div>                                                              
   </div>
 </nav>
 

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import com.niit.dao.UserDao;
+import com.niit.model.Category;
 import com.niit.model.User;
 
 
@@ -28,5 +29,24 @@ public class UserDaoImpl implements UserDao {
 	session.beginTransaction();
 	session.saveOrUpdate(user);
 	session.getTransaction().commit();
-}
+    }
+ 
+ public User findById(String  email){
+	 Session session = sessionFactory.openSession();
+	 User p=null;
+	 
+	 try {
+		 session.beginTransaction();
+		 p= session.get(User.class, email);
+		 session.getTransaction().commit();
+	} catch (HibernateException ex) {
+		
+		ex.printStackTrace();
+		session.getTransaction().rollback();
+	}
+	 
+	 return p;
+	 
+ }
+ 
 }

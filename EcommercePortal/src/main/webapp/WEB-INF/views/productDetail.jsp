@@ -14,7 +14,7 @@
 		<!-- Website Font style -->
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<c:url value="./assets/css/index.css"/>">
-		  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+		 
 		
 <title>Product Detail</title>
 </head>
@@ -81,12 +81,12 @@
 							<span class="color blue"></span>
 						</h5> -->
 						<form action="${pageContext.request.contextPath }/addToCart" method="post">
-						<input type="hidden" value="${product.id}" name="pid"/>
+						<input type="hidden" value="${product.id}" name="pId"/>
 						<input type="hidden" value="${product.price}" name="pPrice"/>
 						<input type="hidden" value="${product.name}" name="name"/>
 						<input type="hidden" value="${product.imgName}" name="imagename"/>
 						<label>Quantity</label>
-						<input type="number" class="form-control" name="qty" required/>
+						<input type="number" class="form-control" name="qty" max="9" min="0" step="1" required/>
 						
 						<div class="action">
 							<button class="add-to-cart btn btn-default" type="submit" value="">add to cart</button>
@@ -98,5 +98,17 @@
 			</div>
 		</div>
 	</div>
+	<script>
+	$(document).ready(function() {
+  $('input').focusout(function() {
+    var max = $(this).val();
+    if (max > 9) {
+      $(this).val("9");
+      alert("Maximum is 9");
+    }
+  });
+
+});
+</script>
 </body>
 </html>

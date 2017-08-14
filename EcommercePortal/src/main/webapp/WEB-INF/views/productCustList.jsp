@@ -18,7 +18,12 @@
 	<jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
 	
 	<br>
-	<div class="container">
+	<div class="container-fluid">
+	<div class="col-lg-3">
+	
+	</div>
+	
+		<div class="col-lg-9">
 	<h2>Product List</h2>
 	
 	<table class="table table-hover" id="category" class="display" border="1" width="80" align="center">
@@ -49,6 +54,7 @@
 	</c:forEach>
 	
 	</table>
+	</div>
 	</div>
 
 </body>
