@@ -6,17 +6,97 @@
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
                   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-   
+     <script src="assets/js/jquery.js"></script>
+   <script src="assets/js/jquery.min.js"></script>
   
   </head>
 <body>
 
+<div class="container">
+<nav class="navbar navbar-toggleable-md navbar-light bg-transparent fixed-top ">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">Navbar</a>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+       <a class="nav-link" href="<c:url value="/" />">Home <span class="sr-only">(current)</span></a>
+      </li>
+     
+       
+        
+       
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Category
+        </a>
+        <ul class="dropdown-menu">
+           <c:forEach items="${catList}" var="cat">
+                                         <li class="dropdown-item"> <a class="nav-link" href="${pageContext.request.contextPath}/productCustList?cid=${cat.cid}">${cat.name}</a></li>
+                                         </c:forEach>
+        </ul>
+      </li>
+      
+      <security:authorize access="hasAuthority('ROLE_ADMIN')">
+            <ul class="nav navbar-nav ">
+            
+            <c:if test="${pageContext.request.userPrincipal.name!=null }">
+             <li class="nav-item"><a class="nav-link" href="<c:url value="/admin/adding" />">Admin</a></li>
+            <li class="nav-item"><a class="nav-link" href="<c:url value="/admin/productList" />">Admin List</a></li>
+                   
+            
+             
+            </c:if>
+            
+            </ul>
+            </security:authorize>
+            
+             <li class="nav-item">
+        <a class="nav-link" href="<c:url value="/about" />">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<c:url value="/contact" />">Contact Us</a>
+      </li>
+      
+      
+            <ul class="navbar-nav navbar-toggler-right">
+            <c:if test="${pageContext.request.userPrincipal.name==null }">
+            <li class="nav-item "><a class="nav-link" href="<c:url value="/register" />">Register</a></li>
+            
+             <li class="nav-item "><a class="nav-link" href="<c:url value="/login" />">Login</a></li>
+            
+            </c:if>
+            <c:if test="${pageContext.request.userPrincipal.name!=null }">
+            
+            <li class="nav-item "><a class="navbar-text" >Welcome :${pageContext.request.userPrincipal.name} </a></li>
+            
+             <li class="nav-item "><a class="nav-link" href="<c:url value="/logout" />">Logout</a></li>
+            </c:if>
+            
+            </ul>      
+            
+      
+     
+      
+      
+    </ul>
+  </div>
+</nav>
+</div>
 
-<nav class="navbar navbar-custom navbar-fixed-top" role="navigation" data-spy="affix" data-offset-top="300">
+
+
+<%-- <nav class="navbar navbar-custom navbar-fixed-top" role="navigation" data-spy="affix" data-offset-top="300">
 
   <div class="container-fluid">
     <div class="navbar-header">          
@@ -52,7 +132,7 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="<c:url value="/" />">Home</a></li>
             
-           <%--  <li><a href="<c:url value="/contact" />">Forms</a></li> --%>
+            <li><a href="<c:url value="/contact" />">Forms</a></li>
            
            
            
@@ -91,7 +171,7 @@
         </div>                                                              
   </div>
 </nav>
-
+ --%>
 
 </body>
 </html>

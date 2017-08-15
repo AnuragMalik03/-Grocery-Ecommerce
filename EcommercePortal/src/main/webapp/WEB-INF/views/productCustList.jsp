@@ -5,12 +5,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link href="/resources/bootstrap.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+     <script src="assets/js/jquery.js"></script>
+   <script src="assets/js/jquery.min.js"></script>
 <title>Admin Page</title>
 </head>
 <body>
@@ -18,12 +21,20 @@
 	<jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
 	
 	<br>
-	<div class="container-fluid">
-	<div class="col-lg-3">
+	<br>
+	<br>
+	<div class="container">
+	<div class="row">
+	<div class="col-md-2">
+  <ul class="nav nav-pills flex-column">
+    <li class="nav-item active"><a class="nav-link active" href="#">Home</a></li>
+    <li class="nav-item" ><a class="nav-link" href="#">Menu 1</a></li>
+    <li class="nav-item"><a class="nav-link" href="#">Menu 2</a></li>
+    <li class="nav-item"><a class="nav-link" href="#">Menu 3</a></li>
+  </ul>
+</div>
 	
-	</div>
-	
-		<div class="col-lg-9">
+		<div class="col-md-10">
 	<h2>Product List</h2>
 	
 	<table class="table table-hover" id="category" class="display" border="1" width="80" align="center">
@@ -54,6 +65,7 @@
 	</c:forEach>
 	
 	</table>
+	</div>
 	</div>
 	</div>
 

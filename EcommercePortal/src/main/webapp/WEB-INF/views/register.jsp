@@ -8,12 +8,15 @@
 
 
 
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-		<!-- Website Font style -->
-	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+     <script src="assets/js/jquery.js"></script>
+   <script src="assets/js/jquery.min.js"></script>
 		<link rel="stylesheet" href="assets/css/style.css">
 		<!-- Google Fonts 
 		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
@@ -34,6 +37,49 @@ border: 1px solid red;
 border : 1px solid gray;
 }
 </style>
+
+<script type="text/javascript">
+
+
+
+function check_info(){
+	
+	var pass = document.getElementById("password").value;
+	var confirmPass = document.getElementById("confirmPassword").value;
+	
+	if(pass == confirmPass)
+	{
+		return true;
+		
+	}else{
+		alert('Password did not match');
+		
+		return false;
+	}
+}
+
+var icon = 's';
+function change(){
+	
+	var pass = document.getElementById('password');
+	var confirmPass = document.getElementById('confirmPassword');
+	var showp = document.getElementById('eye');
+	 
+	if(icon == 's'){
+		showp.innerHTML = '<i class="fa fa-eye-slash"></i>';
+		pass.type = "text";
+		icon = 'noS'
+		
+	}else{
+		showp.innerHTML = '<i class="fa fa-eye"></i>';
+		pass.type = "password";
+		icon ='s';
+	}
+	
+	
+}
+
+</script>
 </head>
 <body>
  
@@ -50,7 +96,7 @@ border : 1px solid gray;
 			<div class="row main">
 				<div class="main-login main-center">
 				<h5>Registration Form</h5>
-					<f:form modelAttribute="user"  method="post" action="saveregister">
+					<f:form modelAttribute="user"  method="post" action="saveregister" onsubmit="return check_info()">
 						
 						<div class="form-group has-error has-feedback has-success">
 							<label for="name" class="cols-sm-2 control-label">Your Name</label>
@@ -91,7 +137,20 @@ border : 1px solid gray;
 							<f:errors path="password" cssClass="err"/>
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="password" path="password" required="required" placeholder="Enter your Password"/>
+									<input type="password" class="form-control" id="password" name="password" path="password" required="required" placeholder="Enter your Password"/>
+								    <span class="input-group-addon" id="eye" onclick="change()"><i class="fa fa-eye"></i></span>
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group has-error has-feedback has-success">
+							<label for="password" class="cols-sm-2 control-label"> Confirm Password</label>
+							<div class="cols-sm-10">
+							
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<input type="password" class="form-control" id="confirmPassword" name="password" required="required" placeholder="Confirm your Password"/>
+								     <span class="input-group-addon" id="eye2"><i class="fa fa-eye"></i></span>
 								</div>
 							</div>
 						</div>
@@ -157,6 +216,8 @@ border : 1px solid gray;
       
 </body>
 </html>
+
+
       <%--  <form:form modelAttribute="user"  method="post" action="saveregister">    
         <table >    
             
