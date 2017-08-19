@@ -4,10 +4,14 @@ package com.niit.daoImpl;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import com.niit.dao.UserDao;
 import com.niit.model.Category;
+import com.niit.model.Product;
 import com.niit.model.User;
 
 
@@ -48,5 +52,17 @@ public class UserDaoImpl implements UserDao {
 	 return p;
 	 
  }
+ 
+public List<User> retrieve(){
+	 
+	 Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		List<User> list = session.createQuery("from User").list();
+		
+		session.getTransaction().commit();
+		
+		return list;
+			  
+      }
  
 }

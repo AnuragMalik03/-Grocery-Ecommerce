@@ -28,6 +28,11 @@ h1.title {
 	font-weight: 400; 
 }
 
+.row{
+	
+	background: #ccc;
+}
+
 hr{
 	width: 10%;
 	color: #fff;
@@ -48,7 +53,7 @@ input::-webkit-input-placeholder {
 }
 
 .main-login{
- 	background-color: #fff;
+ 	background-color:#ccc
     /* shadows and rounded borders */
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
@@ -71,7 +76,7 @@ padding: 8px 12px !important;
     border: 1px solid #ccc;
     margin-top: 28px;
     padding: 6px 12px;
-    color: #666;
+    color: #0000ff;
     text-shadow: 0 1px #fff;
     cursor: pointer;
     -moz-border-radius: 3px 3px;
@@ -92,10 +97,10 @@ padding: 8px 12px !important;
 .main-center{
  	margin-top: 30px;
  	margin: 0 auto;
- 	max-width: 400px;
-    padding: 10px 40px;
-	background:#009edf;
-	    color: #FFF;
+ 	max-width: auto;
+   
+	
+	    color: #fff;
     text-shadow: none;
 	-webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
 -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
@@ -108,6 +113,7 @@ span.input-group-addon i {
 }
 
 .login-button{
+	color : #5bc0de;
 	margin-top: 5px;
 }
 

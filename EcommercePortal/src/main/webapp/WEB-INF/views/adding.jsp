@@ -5,37 +5,39 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link href="/resources/bootstrap.css">
+<!--   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+     <script src="assets/js/jquery.js"></script>
+   <script src="assets/js/jquery.min.js"></script> -->
 <title>Admin Page</title>
 </head>
 <body>
 
 	<jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
-	<div class="container">
-
-		<div class="page-header">
-
-			<br>
-		</div>
+	<br>
+	<br>
+	
+	
+	
 
 		<div class="container">
 			<div class="row">
-				<div clss="col-md-6">
+				<div clss="col-md-8">
 
-					<div class="panel with-nav-tabs panel-primary">
-						<div class="panel-heading">
-							<ul class="nav nav-tabs">
-								<li class="active"><a href="#tab1primary" data-toggle="tab">Category</a></li>
-								<li><a href="#tab2primary" data-toggle="tab">Supplier</a></li>
-								<li><a href="#tab3primary" data-toggle="tab">Products</a></li>
-								<li><a href="#tab4primary" data-toggle="tab">Brand</a></li>
+					<div class="row">
+						
+							<ul class="nav nav-pills nav-fill">
+								<li class="nav-item active"><a class="nav-link" href="#tab1primary" data-toggle="tab">Category</a></li>
+								<li class="nav-item "><a class="nav-link" href="#tab2primary" data-toggle="tab">Supplier</a></li>
+								<li class="nav-item "><a class="nav-link" href="#tab3primary" data-toggle="tab">Products</a></li>
+								<li class="nav-item "><a  class="nav-link" href="#tab4primary" data-toggle="tab">Brand</a></li>
 							</ul>
-						</div>
+						
 
 					</div>
 					<div class="panel-body">
@@ -178,6 +180,6 @@
 			</div>
 
 		</div>
-	</div>
+	
 </body>
 </html>

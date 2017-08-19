@@ -5,12 +5,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+<!--   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script> -->
+   
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
                   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
      <script src="assets/js/jquery.js"></script>
    <script src="assets/js/jquery.min.js"></script>
@@ -25,25 +25,56 @@
 	<br>
 	<div class="container">
 	<div class="row">
-	<div class="col-md-2">
-  <ul class="nav nav-pills flex-column">
-    <li class="nav-item active"><a class="nav-link active" href="#">Home</a></li>
-    <li class="nav-item" ><a class="nav-link" href="#">Menu 1</a></li>
-    <li class="nav-item"><a class="nav-link" href="#">Menu 2</a></li>
-    <li class="nav-item"><a class="nav-link" href="#">Menu 3</a></li>
-  </ul>
-</div>
 	
-		<div class="col-md-10">
+
+
+	
 	<h2>Product List</h2>
 	
-	<table class="table table-hover" id="category" class="display" border="1" width="80" align="center">
+	
+	
+	
+	
+	
+<%-- 	
+	
+	<div class="card-group">
+	<c:forEach var="c" varStatus="st" items="${productList }">
+	
+  <div class="card">
+  <div class="card-header">
+      <small class="text-muted text-left"><c:out value="${st.count }"></c:out></small>
+      <small class="card-text pull-right" style="color:red;" >Save <i class="fa fa-inr"></i>.20 <i class="fa fa-diamond"></i></small>
+    </div>
+    <img class="card-img-top" src="${pageContext.request.contextPath }/resources/${c.imgName}" height="200px" alt="Card image cap">
+    <div class="card-block ">
+      <p class="text-muted"><c:out value="${c.name }"></c:out></p> 
+      <p class="card-text">Rs.<c:out value="${c.price }"></c:out></p>
+     <p class="card-text"> <c:out value="${c.description }"></c:out></p> 
+      <c:set var="contextRoot" value="${pageContext.request.contextPath }"></c:set>
+	<a class="btn btn-info" role="button"  href="<c:url value="/productDetail/${c.id }"/>"><i class="fa fa-info-circle"></i></a>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Standard Delivery: Tomorrow Morning</small>
+    </div>
+  </div>
+ 
+  </c:forEach>
+ </div> --%>
+ 
+ 
+	<table class="table table-hover table-bordered" id="category" class="display" border="3" width="80" align="center">
+	<thead class="thead-default">
 	<tr>
 	<th>Sr No.</th><th>PID</th><th>Name</th><th>Brand</th><th>Supplier</th><th>Stock</th><th>Category</th><th>Price</th><th style="width:15">Description</th>
 	<th>Image</th><th>Action</th>
-	
-	<c:if test="${empty productList }"><tr><td colspan="9"  align="center">No Record Exists</td></tr></c:if>
-	<c:forEach var="c" varStatus="st" items="${productList }">
+	</tr>
+	</thead>
+
+    <tbody>
+    <c:if test="${empty productList }"><tr><td colspan="9"  align="center">No Record Exists</td></tr></c:if>
+
+    <c:forEach var="c" varStatus="st" items="${productList }">
 	<tr>
 	<td><c:out value="${st.count }"></c:out></td>
 	<td><c:out value="${c.id }"></c:out></td>
@@ -58,14 +89,15 @@
 	
 	<td>
 	<c:set var="contextRoot" value="${pageContext.request.contextPath }"></c:set>
-	<a class="btn btn-info" role="button"  href="<c:url value="/productDetail/${c.id }"/>">Details</a>
+	<a class="btn btn-info" role="button"  href="<c:url value="/productDetail/${c.id }"/>"><i class="fa fa-info-circle"></i></a>
 	</td>
 	
 	</tr>
 	</c:forEach>
+	</tbody>
 	
 	</table>
-	</div>
+	
 	</div>
 	</div>
 

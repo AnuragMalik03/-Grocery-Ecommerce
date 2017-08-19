@@ -58,6 +58,8 @@ sessionBuilder.addAnnotatedClass(Supplier.class);
 sessionBuilder.addAnnotatedClass(Brand.class);
 sessionBuilder.addAnnotatedClass(Cart.class);
 sessionBuilder.addAnnotatedClass(Order.class);
+/*sessionBuilder.addAnnotatedClass(Address.class);*/
+
 
 
 
@@ -116,6 +118,14 @@ public OrderDaoImpl getOrderDAO(SessionFactory sessionFactory)
 {
 return new OrderDaoImpl(sessionFactory);
 }
+
+/*@Autowired
+@Bean(name="AddressDaoImpl")
+public AddressDaoImpl getAddressDAO(SessionFactory sessionFactory)
+{
+return new AddressDaoImpl(sessionFactory);
+}*/
+
 
 
 

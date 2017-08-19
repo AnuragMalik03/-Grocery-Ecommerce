@@ -5,10 +5,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link href="/resources/bootstrap.css">
+   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script> -->
+  
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+     <script src="assets/js/jquery.js"></script>
+   <script src="assets/js/jquery.min.js"></script>
 <title>Update Product</title>
 
 <style>
@@ -112,12 +117,12 @@ body{
 			    				 <input type="text" name="pStock" value="${prod.brand.brandName}"  class="form-control input-sm" disabled /> 
 			    					</div>
 			    				</div>
-			    				
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
 			    				<div class="form-group">
 			    			    <label class="cols-sm-2 control-label">Image</label>
 			    				<input  class="form-control input-sm" type="text" name="file" value="${prod.imgName }" disabled/>
 			    			   </div>
-			    				
+			    				</div>
 			    			</div>
 			    			
 			    			<button type="update"  class="btn btn-info btn-block" disabled>Update</button>
@@ -207,12 +212,12 @@ body{
 			    						<%-- <input type="text" name="pStock" value="${prod.stock }"  class="form-control input-sm" required> --%>
 			    					</div>
 			    				</div>
-			    				
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
 			    				<div class="form-group">
 			    			    <label class="cols-sm-2 control-label">Image</label>
-			    				<input  class="form-control input-sm" type="file" name="file" required/>
+			    				<input  class="form-control input-xs" type="file" name="file" required/>
 			    			   </div>
-			    				
+			    				</div>
 			    			</div>
 			    			
 			    			<button type="update"  class="btn btn-info btn-block">Update</button>

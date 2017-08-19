@@ -5,12 +5,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link href="/resources/bootstrap.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script> -->
+  
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+     <script src="assets/js/jquery.js"></script>
+   <script src="assets/js/jquery.min.js"></script>
 <title>Admin Page</title>
 </head>
 <body>
@@ -22,7 +25,7 @@
 	<div class="container">
 	<h2>Product List</h2>
 	
-	<table class="table table-hover" id="category" class="display" border="1" width="80" align="center">
+	<table class="table table-hover table-bordered" id="category" class="display" border="1" width="80" align="center">
 	<tr>
 	<th>Sr No.</th><th>PID</th><th>Name</th><th>Brand</th><th>Supplier</th><th>Stock</th><th>Category</th><th>Price</th><th style="width:15">Description</th>
 	<th>Image</th><th class="span2">Action</tr>
@@ -43,7 +46,7 @@
 	<td><img src="${pageContext.request.contextPath }/resources/${c.imgName}" height="60px" width="60px"></td>
 	<td>
 	<c:set var="contextRoot" value="${pageContext.request.contextPath }"></c:set>
-	               <a class="btn btn-info" role="button"  href="<c:url value="/admin/deleteProduct/${c.id }"/>">Delete</a>
+	               <a class="btn btn-info" role="button"  href="<c:url value="/admin/deleteProduct/${c.id }"/>"><i class="fa fa-trash"></i></a>
 	               <a class="btn btn-info" role="button" href="${contextRoot }/admin/updateProduct?id=<c:out value="${c.id}"></c:out>">Update</a>
 	
 	</td>

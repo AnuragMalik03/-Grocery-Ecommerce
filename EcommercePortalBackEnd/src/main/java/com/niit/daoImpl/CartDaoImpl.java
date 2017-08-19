@@ -61,13 +61,14 @@ public class CartDaoImpl implements CartDao {
 			 session.beginTransaction();
 			 c= (Cart) session.createQuery("from Cart where userMailId= :email and cartProductID= :id").setString("email" , userEmail).setInteger("id", cartId).uniqueResult();
 			 session.getTransaction().commit();
-			 System.out.println("reachead end of getCartbyid");
+			 
 		 
 		 return c;
 		 
 	 }
 	 
 	 public void deleteCart(int cartId){
+		 System.out.println("reachead inside delete");
 		 Session session = sessionFactory.openSession();
 		 session.beginTransaction();
 		 Cart cr = (Cart)session.get(Cart.class, cartId);

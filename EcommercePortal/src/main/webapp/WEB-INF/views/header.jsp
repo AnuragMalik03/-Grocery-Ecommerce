@@ -6,13 +6,12 @@
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script> -->
   
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
                   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
      <script src="assets/js/jquery.js"></script>
    <script src="assets/js/jquery.min.js"></script>
@@ -21,7 +20,7 @@
 <body>
 
 <div class="container">
-<nav class="navbar navbar-toggleable-md navbar-light bg-transparent fixed-top ">
+<%-- <nav class="navbar navbar-toggleable-md navbar-light bg-transparent fixed-top ">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -47,7 +46,7 @@
         </ul>
       </li>
       
-      <security:authorize access="hasAuthority('ROLE_ADMIN')">
+      <sec:authorize access="hasRole("ROLE_ADMIN")">
             <ul class="nav navbar-nav ">
             
             <c:if test="${pageContext.request.userPrincipal.name!=null }">
@@ -59,7 +58,7 @@
             </c:if>
             
             </ul>
-            </security:authorize>
+            </sec:authorize>
             
              <li class="nav-item">
         <a class="nav-link" href="<c:url value="/about" />">About</a>
@@ -78,7 +77,7 @@
             </c:if>
             <c:if test="${pageContext.request.userPrincipal.name!=null }">
             
-            <li class="nav-item "><a class="navbar-text" >Welcome :${pageContext.request.userPrincipal.name} </a></li>
+            <li class="nav-item "><a class="navbar-text" ><i class="fa fa-user"></i> :${pageContext.request.userPrincipal.name} </a></li>
             
              <li class="nav-item "><a class="nav-link" href="<c:url value="/logout" />">Logout</a></li>
             </c:if>
@@ -91,12 +90,12 @@
       
     </ul>
   </div>
-</nav>
-</div>
+</nav> --%>
 
 
 
-<%-- <nav class="navbar navbar-custom navbar-fixed-top" role="navigation" data-spy="affix" data-offset-top="300">
+
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation" data-spy="affix" data-offset-top="300">
 
   <div class="container-fluid">
     <div class="navbar-header">          
@@ -119,7 +118,7 @@
             
             </c:if>
             <c:if test="${pageContext.request.userPrincipal.name!=null }">
-            
+            <li><a class="page-scroll" href="<c:url value="/cart/goToCart"/>"></a><i class="fa fa-shopping-cart"></i></a></li>
             <li><a >Welcome :${pageContext.request.userPrincipal.name} </a></li>
             
              <li><a class="page-scroll" href="<c:url value="/logout" />">Logout</a></li>
@@ -132,9 +131,7 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="<c:url value="/" />">Home</a></li>
             
-            <li><a href="<c:url value="/contact" />">Forms</a></li>
-           
-           
+               
            
           <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Category<span class="caret"></span></a>
@@ -149,15 +146,16 @@
             
             
           
-          <security:authorize access="hasAuthority('ROLE_ADMIN')">
-            <ul class="nav navbar-nav navbar-right">
-            
+          <security:authorize access="hasRole('ROLE_ADMIN')">
+          <c:set var="r" value="uList"></c:set>
+            <ul class="nav navbar-nav navbar-right" >
+            <c:if test="${role==ROLE_ADMIN }">
             <c:if test="${pageContext.request.userPrincipal.name!=null }">
              <li><a class="page-scroll" href="<c:url value="/admin/adding" />">Admin</a></li>
             <li><a class="page-scroll" href="<c:url value="/admin/productList" />">Admin List</a></li>
                    
             
-             
+             </c:if>
             </c:if>
             
             </ul>
@@ -171,7 +169,8 @@
         </div>                                                              
   </div>
 </nav>
- --%>
+</div>
+
 
 </body>
 </html>

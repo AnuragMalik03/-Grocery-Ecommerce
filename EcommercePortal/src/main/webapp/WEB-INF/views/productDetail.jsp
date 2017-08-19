@@ -6,15 +6,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<link rel="stylesheet" href="/resources/css.css" type="text/css"/>
-
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script> -->
+  
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-		<!-- Website Font style -->
-	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-		<link rel="stylesheet" href="<c:url value="./assets/css/index.css"/>">
-		 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+     <script src="assets/js/jquery.js"></script>
+   <script src="assets/js/jquery.min.js"></script>
+		
+		
 		
 <title>Product Detail</title>
 </head>
@@ -23,8 +25,11 @@
 	
 	<br>
 	<br>
+	<br>
+	<br>
 	
 	<div class="container">
+	<div class="jumbotron">
 		<div class="card">
 			<div class="container-fliud">
 				<div class="wrapper row">
@@ -37,13 +42,7 @@
 						  <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
 						  <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div> -->
 						</div>
-						<ul class="preview-thumbnail nav nav-tabs">
-						  <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="${pageContext.request.contextPath }/resources/${product.imgName}" /></a></li>
-						 <!--  <li><a data-target="#pic-2" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-						  <li><a data-target="#pic-3" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-						  <li><a data-target="#pic-4" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-						  <li><a data-target="#pic-5" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li> -->
-						</ul>
+						
 						
 					</div>
 					<div class="details col-md-6">
@@ -80,31 +79,53 @@
 							<span class="color green"></span>
 							<span class="color blue"></span>
 						</h5> -->
-						<form action="${pageContext.request.contextPath }/addToCart" method="post">
+						<form action="${pageContext.request.contextPath }/cart/addToCart" method="post">
 						<input type="hidden" value="${product.id}" name="pId"/>
 						<input type="hidden" value="${product.price}" name="pPrice"/>
 						<input type="hidden" value="${product.name}" name="name"/>
 						<input type="hidden" value="${product.imgName}" name="imagename"/>
+						
+						<security:authorize access="hasRole('ROLE_USER')">
 						<label>Quantity</label>
-						<input type="number" class="form-control" name="qty" max="9" min="0" step="1" required/>
+						<input type="number" id="qty" class="form-control" name="quant" max="${product.stock }" min="1" step="1" required/>
 						
 						<div class="action">
-							<button class="add-to-cart btn btn-default" type="submit" value="">add to cart</button>
+							<button class="add-to-cart btn btn-default" type="submit" value="" onclick="check()">add to cart</button>
 							<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
 						</div>
+						
+						</security:authorize>
 						</form>
 					</div>
 				</div>
 			</div>
 		</div>
+		</div>
 	</div>
 	<script>
+	
+/* 	function check(){
+		
+		var quantity = document.getElementById("qty").value;
+		
+		if(quantity<=${product.stock}){
+			
+			return true;
+			
+		}else{
+			
+			alert( Quantity + " are not available in Stock , please select less quantity")
+			return false;
+		}
+		
+	} */
 	$(document).ready(function() {
   $('input').focusout(function() {
     var max = $(this).val();
-    if (max > 9) {
-      $(this).val("9");
-      alert("Maximum is 9");
+    var available = ${product.stock};
+    if (max > available) {
+      $(this).val(available-1);
+      alert("Maximum is " +available);
     }
   });
 

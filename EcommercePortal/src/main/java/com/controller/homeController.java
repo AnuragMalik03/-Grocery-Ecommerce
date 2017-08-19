@@ -1,6 +1,9 @@
 package com.controller;
 
 
+import java.security.Principal;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +36,9 @@ public class homeController {
 	
 	@Autowired
 	UserDaoImpl userDaoImpl;
+	
+	@Autowired
+	AddressDaoImpl addressDaoImpl;
 	@Autowired
 	CategoryDaoImpl categoryDaoImpl;
 	@Autowired
@@ -104,6 +110,7 @@ public class homeController {
 		else {
 			user.setRole("ROLE_USER");
 			userDaoImpl.insertUser(user);
+			mav.addObject("user", user);
 			mav.setViewName("redirect:/login");
 			return mav;
 		}
@@ -126,6 +133,7 @@ public class homeController {
 		m.addAttribute("satList" , supplierDaoImpl.retrieve());
 		m.addAttribute("proList" , productDaoImpl.retrieve());
 		m.addAttribute("broList" , brandDaoImpl.retrieve());
+		m.addAttribute("uList" , userDaoImpl.retrieve());
 		
 	}
 	
@@ -140,5 +148,6 @@ public class homeController {
 		return mav;
 		
 	}
-
+	
+	
 }
