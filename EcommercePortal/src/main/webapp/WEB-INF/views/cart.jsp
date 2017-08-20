@@ -432,7 +432,7 @@ hr{
 	<td><img src="${pageContext.request.contextPath }/resources/${c.cartImage}" height="60px" width="60px"></td>
 	<td><c:out value="${c.cartQuantity * c.cartPrice }"></c:out></td>
 	<td>
-	          <a class="btn btn-danger" role="button"  href="<c:url value="/deleteCart/${c.cartId}"/>">Delete</a></td>
+	          <a class="btn btn-danger" role="button"  href="<c:url value="/cart/deleteCart/${c.cartId}"/>">Delete</a></td>
 	       
 	          <c:set var="gtot" value="${gtot +  c.cartQuantity * c.cartPrice}"></c:set>
 	</tr>

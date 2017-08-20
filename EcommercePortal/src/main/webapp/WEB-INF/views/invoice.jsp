@@ -55,9 +55,9 @@
     				<address>
     				<strong>Billed To:</strong><br>
     					<br>
-    					${c.address}<br>
-    					${c.add}<br>
-    					${c.city}<br>
+    					${user.address}<br>
+    					${user.addrs1}<br>
+    					${user.city}<br>
     					${c.state}
     				</address>
     			</div>

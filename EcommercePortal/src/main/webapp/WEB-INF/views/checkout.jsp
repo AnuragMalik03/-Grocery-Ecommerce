@@ -17,19 +17,107 @@
 
 <title>Cart</title>
 <script type="text/javascript">
-function checked(){
-	
-	var check = document.getElementById("checkbox").checked;
-	var first =document.getElementById("checkbox").checked
-	if(check==true){
-		sfirst.value = first.value;
+function check(){
+		
+	if(document.getElementById('checkbox').checked == true){
+		document.getElementById('c1').value = document.getElementById('s1').value;
+		document.getElementById('c2').value = document.getElementById('s2').value;
+		document.getElementById('c3').value = document.getElementById('s3').value;
+		document.getElementById('c4').value = document.getElementById('s4').value;
+		document.getElementById('c5').value = document.getElementById('s5').value;
+		document.getElementById('c6').value = document.getElementById('s6').value;
 	}
 	else{
-		sfirst.value="";
+		
+		document.getElementById('c1').value = "";
+		document.getElementById('c2').value = "";
+		document.getElementById('c3').value = "";
+		document.getElementById('c4').value = "";
+		document.getElementById('c5').value = "";
+		document.getElementById('c6').value = "";
+		
+	}
+	
+		
+	}
+
+</script>
+<script type="text/javascript">
+
+function payment(){
+	console.log('reached in side payment ');
+	    var carde = document.getElementById('radio2').checked ;
+		var code = document.getElementById('radio1').checked;
+		console.log('got id frm  payment ');
+	    if ( code == false && carde == false ) {
+	    	
+	    	alert('Select Payment Option');
+	    	return false;
+	    	console.log('inside if of  payment ');
+	       
+	    }else{
+	    	
+	    	console.log('inside of else  payment ');
+	    	alert('payment succesful')
+	    	return true;
+	    }
+	    
+}
+</script>
+	    
+<script type="text/javascript">
+
+function clickmethod(){
+	console.log('inside of method ');
+	    var card = document.getElementById('radio2').checked ;
+		var cod = document.getElementById('radio1').checked;
+		var disp = document.getElementById('pay');
+	    
+		if(card == true){
+		console.log('inside if of method ');
+			
+	    	 disp.style.display = 'block';
+	    	
+	    	 document.getElementById('cardNumber').required = true ;
+	    	 document.getElementById('expiryMonth').required = true ;
+	    	 document.getElementById('expiryYear').required = true ;
+	    	 document.getElementById('cvv').required = true ; 
+	    	 
+	    }
+		else if(cod == true) {
+			
+	    	console.log('inside  of else method ');
+	    	
+	    	disp.style.display = 'none';
+	    	
+	    	 document.getElementById('cardNumber').required = false ;
+	    	 document.getElementById('expiryMonth').required = false ;
+	    	 document.getElementById('expiryYear').required = false ;
+	    	 document.getElementById('cvv').required = false ; 
+	    	
+	    }
+}
+
+</script>
+
+<script type="text/javascript">
+
+function clickCod(){
+	
+	var cod = document.getElementById('radio1').checked;
+	var disp = document.getElementById('pay');
+	
+	if(cod == true){
+		
 		
 	}
 }
+
 </script>
+<style type="text/css">
+.panel-title {display: inline;font-weight: bold;}
+.pl-ziro { padding-left: 0px; }
+</style>
 
 </head>
 <body>
@@ -45,18 +133,24 @@ function checked(){
                         
                                 
                                          
-      <form class="form-horizontal" action="${pageContext.request.contextPath }/cart/invoiceprocess" method="post" role="form" >
+<form class="form-horizontal" action="${pageContext.request.contextPath }/cart/invoiceprocess" method="post"  onsubmit="return payment()" >
+        
         <fieldset>
+        <c:set var="gtot" value="0"></c:set>
+        <c:forEach var="c" items="${cart }">
+        <c:set var="gtot" value="${gtot + c.cartPrice * c. cartQuantity}"> </c:set>
+         </c:forEach>
 <div class="row">
 <div class="col-md-6 shipping col-sm-6 col-xs-12">
+
          
           <!-- Form Name -->
-          <legend>Address Details</legend>
-          <input type="hidden" placeholder="First Name"  value="${pageContext.request.userPrincipal.name}" name="userEmail" class="form-control">
+          <legend>Billing Address</legend>
+         
           <div class="form-group">
             <label class="col-sm-2 control-label" for="textinput">First Name</label>
             <div class="col-sm-4">
-              <input type="text" name="first" id="first" placeholder="First Name" value="${user.name }" class="form-control">
+              <input type="text" name="first" id="s1" placeholder="First Name" value="${user.name }" class="form-control">
             </div>
 
              <label class="col-sm-2 control-label" for="textinput">Last Name</label>
@@ -69,7 +163,7 @@ function checked(){
           <div class="form-group">
             <label class="col-sm-2 control-label" for="textinput">Line 1</label>
             <div class="col-sm-10">
-              <input type="text" name="address"  placeholder="Address Line 1" value="${user.addrs1 }" class="form-control">
+              <input type="text" name="address" id="s2" placeholder="Address Line 1" value="${user.addrs1 }" class="form-control">
             </div>
           </div>
 
@@ -77,7 +171,7 @@ function checked(){
           <div class="form-group">
             <label class="col-sm-2 control-label" for="textinput">Line 2</label>
             <div class="col-sm-10">
-              <input type="text" name="add" placeholder="Address Line 2" value="${user.addrs2 }" class="form-control">
+              <input type="text" name="add" id="s3" placeholder="Address Line 2" value="${user.addrs2 }" class="form-control">
             </div>
           </div>
 
@@ -85,7 +179,7 @@ function checked(){
           <div class="form-group">
             <label class="col-sm-2 control-label" for="textinput">City</label>
             <div class="col-sm-10">
-              <input type="text" placeholder="City" name="city" value="${user.city }" class="form-control">
+              <input type="text" placeholder="City" id="s4" name="city" value="${user.city }" class="form-control">
             </div>
           </div>
 
@@ -93,12 +187,12 @@ function checked(){
           <div class="form-group">
             <label class="col-sm-2 control-label" for="textinput">State</label>
             <div class="col-sm-4">
-              <input type="text" placeholder="State" name="state" value="${user.state }" class="form-control">
+              <input type="text" placeholder="State" id="s5" name="state" value="${user.state }" class="form-control">
             </div>
 
             <label class="col-sm-2 control-label" for="textinput">Postcode</label>
             <div class="col-sm-4">
-              <input type="text" placeholder="Post Code"  name="pincode"  value="${user.zip }" class="form-control">
+              <input type="text" placeholder="Post Code" id="s6" name="pincode"  value="${user.zip }" class="form-control">
             </div>
           </div>
 
@@ -106,7 +200,7 @@ function checked(){
      
                           <div class="form-group">
                             <div class="pull-right">
-                           <input class="coupon_question" type="checkbox" onclick="checked()" id="checkbox"  name="coupon_question" value="1">
+                           <input class="coupon_question" type="checkbox" id="checkbox" onclick="check()" name="checkbox" >
                                         <span class="item-text">Check Shipping address</span>
                                         </div>
                                         
@@ -143,11 +237,11 @@ function checked(){
 <div class="col-md-6 shipping col-sm-6 col-xs-12">
           <!-- Form Name -->
           <legend>shipping Address</legend>
-         
+          <input type="hidden" placeholder="First Name"  value="" name="userEmail" class="form-control">
           <div class="form-group">
             <label class="col-sm-2 control-label" for="textinput">First Name</label>
             <div class="col-sm-4">
-              <input type="text" name="sfirst" id="sfirst" placeholder="First Name" class="form-control">
+              <input type="text" name="sname" id="c1" placeholder="First Name" class="form-control">
             </div>
 
             <label class="col-sm-2 control-label" for="textinput">Last Name</label>
@@ -160,7 +254,7 @@ function checked(){
           <div class="form-group">
             <label class="col-sm-2 control-label" for="textinput">Line 1</label>
             <div class="col-sm-10">
-              <input type="text" name="sadd1" placeholder="Address Line 1" class="form-control">
+              <input type="text" name="sadd1" id="c2" placeholder="Address Line 1" class="form-control">
             </div>
           </div>
 
@@ -168,14 +262,14 @@ function checked(){
           <div class="form-group">
             <label class="col-sm-2 control-label" for="textinput">Line 2</label>
             <div class="col-sm-10">
-              <input type="text" name="sadd2" placeholder="Address Line 2" class="form-control">
+              <input type="text" name="sadd2" id="c3" placeholder="Address Line 2" class="form-control">
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-sm-2 control-label" for="textinput">City</label>
             <div class="col-sm-10">
-              <input type="text" placeholder="City" name="scity" class="form-control">
+              <input type="text" placeholder="City" id="c4" name="scity" class="form-control">
             </div>
           </div>
 
@@ -183,27 +277,85 @@ function checked(){
           <div class="form-group">
             <label class="col-sm-2 control-label" for="textinput">State</label>
             <div class="col-sm-4">
-              <input type="text" placeholder="State" name="sstate" class="form-control">
+              <input type="text" placeholder="State" id="c5" name="sstate" class="form-control">
             </div>
 
             <label class="col-sm-2 control-label" for="textinput">Postcode</label>
             <div class="col-sm-4">
-              <input type="text" placeholder="Post Code" name="spincode" class="form-control">
+              <input type="text" placeholder="Post Code" id="c6" name="szip" class="form-control">
             </div>
           </div>
 
-          <div class="form-group">
-          <div class="col-md-12">
-               <button class="btn btn-primary pull-right">   Continue  </button>
-          </div>
-            <!-- <div class="col-sm-offset-2 col-sm-10">
-              <div class="pull-right">
-                <button type="submit" class="btn btn-default">Cancel</button>
-                <button type="submit" class="btn btn-primary">Save</button>
-              </div>
-            </div> -->
-          </div> 
+ <div class="form-group">
+                            <div class="pull-right">
+                            <h4 class="item-text">Select Payment Options : -</h4>
+                            <span>COD : </span>
+                           <input class="coupon_question" type="radio"  id="radio1" onclick="clickCod();" name="pay" value="no"/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       <span>CARD : </span>
+                           <input class="coupon_question" type="radio"  id="radio2" onclick="clickmethod();" name="pay" value="yes"/>
+                                        
+                                        </div>
+                                        
+ </div> 
+   
 </div>
+
+
+
+ <div class="col-xs-12 col-md-4 " id="pay" style="display:none" >
+         <div class="panel panel-default">
+               <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Payment Details
+                    </h3>
+               </div>
+              <div class="panel-body">
+                  <div class="col-xs-12 col-md-12">
+                    <div class="form-group">
+                           <label for="cardNumber">CARD NUMBER</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="Valid Card Number"  autofocus />
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-xs-7 col-md-7">
+                            <div class="form-group">
+                                <label for="expityMonth">EXPIRY DATE</label><br>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" name="month" id="expityMonth" placeholder="MM"  />
+                                </div>
+                                <div class=" col-lg-6">
+                                    <input type="text" class="form-control" name="year" id="expityYear" placeholder="YY"  />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-5 col-md-5 ">
+                            <div class="form-group">
+                                <label for="cvCode">CV CODE</label>
+                                <input type="password" class="form-control" name="cvv" id="cvv" placeholder="CV"  />
+                            </div>
+                        </div>
+                     </div>
+                  </div>
+                   
+                </div>
+           </div>
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="#"><span class="badge pull-right"><span class="glyphicon glyphicon-usd"></span>${gtot}</span> Final Payment</a>
+                </li>
+            </ul>
+            <input type="hidden" value="${gtot }" name="total"/>
+            <br/>
+           <!--  <div  style=" text-align: center">
+       <button value="" class="btn btn-success btn-lg btn-block" role="button">Pay</button> 
+       </div>
+             -->
+</div>
+
+<button  type="submit" class="btn btn-success btn-lg btn-block" role="submit">Continue..</button>
+
 </div> 
         </fieldset>
         

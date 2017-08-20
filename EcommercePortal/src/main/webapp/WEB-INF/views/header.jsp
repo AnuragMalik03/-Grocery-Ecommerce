@@ -142,25 +142,23 @@
         </ul>
       </li>
            
-        
-            
-            
+                
+          <li>
+              <security:authorize access="hasRole('ROLE_ADMIN')">
           
-          <security:authorize access="hasRole('ROLE_ADMIN')">
-          <c:set var="r" value="uList"></c:set>
             <ul class="nav navbar-nav navbar-right" >
-            <c:if test="${role==ROLE_ADMIN }">
+            
             <c:if test="${pageContext.request.userPrincipal.name!=null }">
              <li><a class="page-scroll" href="<c:url value="/admin/adding" />">Admin</a></li>
             <li><a class="page-scroll" href="<c:url value="/admin/productList" />">Admin List</a></li>
                    
             
              </c:if>
-            </c:if>
+            
             
             </ul>
             </security:authorize>
-          
+          </li>
             
            <li><a class="page-scroll" href="<c:url value="/about" />">About</a></li>
             <li><a class="page-scroll" href="<c:url value="/contact" />">Contact Us</a></li>

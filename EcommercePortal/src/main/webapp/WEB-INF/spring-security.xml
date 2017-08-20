@@ -25,7 +25,7 @@ https://www.springframework.org/security/spring-security.xsd">
 		<security:form-login 
 		    login-page="/login"
 			username-parameter="username" password-parameter="password"
-			authentication-failure-forward-url="/error"
+			authentication-failure-forward-url="/login"
 			authentication-success-forward-url="/userLogged" />
 
 		<security:access-denied-handler
@@ -41,8 +41,8 @@ https://www.springframework.org/security/spring-security.xsd">
 			<security:authentication-provider>
 				<security:jdbc-user-service
 					data-source-ref="dataSource"
-					users-by-username-query="select email,password,'TRUE'  as enabled from user where email=?"
-					authorities-by-username-query="select email,role from user where email=?"/>
+					users-by-username-query="select email,password,'TRUE'  as enabled From user where email=?"
+					authorities-by-username-query="select email,role From user where email=?"/>
 
 			</security:authentication-provider>
 		</security:authentication-manager>

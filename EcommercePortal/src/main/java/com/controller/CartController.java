@@ -129,7 +129,7 @@ public class CartController {
 		Principal principal = request.getUserPrincipal();
 		String userEmail = principal.getName();
 		Double total= Double.parseDouble(request.getParameter("total"));
-		String payment= request.getParameter("payment");
+		String payment= request.getParameter("pay");
 	/*	String add1 = request.getParameter("address1");
 		String add2 = request.getParameter("address2");
 		String city = request.getParameter("city");
