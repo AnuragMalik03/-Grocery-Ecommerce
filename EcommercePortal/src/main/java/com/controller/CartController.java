@@ -28,6 +28,7 @@ import com.niit.model.Address;
 import com.niit.model.Cart;
 
 import com.niit.model.Order;
+import com.niit.model.Product;
 import com.niit.model.Supplier;
 import com.niit.model.User;
 
@@ -129,29 +130,54 @@ public class CartController {
 		Principal principal = request.getUserPrincipal();
 		String userEmail = principal.getName();
 		Double total= Double.parseDouble(request.getParameter("total"));
-		String payment= request.getParameter("pay");
-	/*	String add1 = request.getParameter("address1");
-		String add2 = request.getParameter("address2");
-		String city = request.getParameter("city");
-		String state = request.getParameter("state");	
-		String country = request.getParameter("country");
-		
-		
-		ArrayList<String> list = new ArrayList<String>();
-		list.add(request.getParameter("address"));
-		list.add(request.getParameter("add"));
-		list.add(request.getParameter("city"));
-		list.add(request.getParameter("state"));
-		list.add(request.getParameter("country"));
-		list.add(userEmail);
+		String payment= request.getParameter("payment");
+
+		String ShipName = request.getParameter("sname");
+		String Shipadd1 = request.getParameter("sadd1");
+		String Shipadd2 = request.getParameter("sadd2");
+		String Shipcity = request.getParameter("scity");
+		String Shipstate = request.getParameter("sstate");
+		String Shipzip = request.getParameter("szip");
+		List<String> list = new ArrayList<String>();
+		list.add(ShipName);
+		list.add(Shipadd1);
+		list.add(Shipadd2);
+		list.add(Shipcity);
+		list.add(Shipstate);
+		list.add(Shipzip);
 		mav.addObject("list", list);
-		System.out.println(list);*/
+		
 		User user= userDaoImpl.findById(userEmail);
+		List<Cart> cart = cartDaoImpl.findCartById(userEmail);
 		ord.setUser(user);
 		ord.setTotal(total);
 		ord.setPayment(payment);
         orderDaoImpl.insertOrders(ord);
+        mav.addObject("order", ord);
+        mav.addObject("cart", cart);
         mav.addObject("orderDetails", user);
+/*     List<Product> prod = productDaoImpl.getProdById(pid); 
+		for (Cart cartItem : cart) {
+
+			qty = cartItem.getQuantity(); // Finding total quantities purchased
+											// by user.
+			Product product = cartItem.getProduct();
+            
+			int ProductQuantity = product.getQuantity();
+			
+			if(qty==ProductQuantity)
+			{
+				product.setQuantity(0);
+			}
+            
+			if(qty!=ProductQuantity)
+			{
+			product.setQuantity(ProductQuantity - qty);
+			}
+			
+			productService.updateProduct(product);
+
+		}*/
         return mav;
 	 }
         
@@ -202,6 +228,7 @@ public ModelAndView saveAddress(HttpServletRequest req ){
 	Principal principal = request.getUserPrincipal();
 	String userEmail = principal.getName();
 	User user=userDaoImpl.findById(userEmail);
+	
 	List<Cart> cart = cartDaoImpl.findCartById(userEmail);
 	mav.addObject("user", user);
 	mav.addObject("cart", cart);

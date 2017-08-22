@@ -49,7 +49,7 @@ public class User implements Serializable {
 	private String address;*/
 	
 	@NotNull
-	@Pattern(regexp="[\\d]{10}" , message="Plese Enter Digits")
+	@Pattern(regexp="^[A-Za-z0-9]+$" , message="Plese Enter Digits")
 	@Size(min=8 , max=10 , message="Enter Correct Phone")
 	private String phone;
 	private boolean enabled = true;

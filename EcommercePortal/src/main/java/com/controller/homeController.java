@@ -34,6 +34,8 @@ public class homeController {
 		return "index";
 	}
 	
+
+	
 	@Autowired
 	UserDaoImpl userDaoImpl;
 	
@@ -133,7 +135,7 @@ public class homeController {
 		m.addAttribute("satList" , supplierDaoImpl.retrieve());
 		m.addAttribute("proList" , productDaoImpl.retrieve());
 		m.addAttribute("broList" , brandDaoImpl.retrieve());
-		m.addAttribute("uList" , userDaoImpl.retrieve());
+		
 		
 	}
 	
@@ -147,6 +149,81 @@ public class homeController {
 		mav.setViewName("productDetail");
 		return mav;
 		
+	}
+	
+	@RequestMapping("/userName")
+	public ModelAndView  userInput(HttpServletRequest request)
+	{
+		
+		ModelAndView mav = new ModelAndView("userName");
+		
+		/*String userId=request.getParameter("username");
+		if(userId != ""){
+		User user = userDaoImpl.findById(userId);
+		mav.addObject("user", user);
+		}*/
+		return mav;
+		
+	}
+	
+	@RequestMapping(value="/reset" , method= RequestMethod.POST)
+	public ModelAndView  reset(HttpServletRequest request)
+	{
+		
+		ModelAndView mav = new ModelAndView();
+		String userId = request.getParameter("username");
+		
+		User user = userDaoImpl.findById(userId);
+		String answer = request.getParameter("answer") ;
+		String actual = user.getSecurityA();
+		System.out.println(actual);
+		System.out.println(answer);
+		mav.addObject("user", user);
+		if( answer.equals(actual)){
+			mav.setViewName("passwordReset");
+			return mav;
+		
+		}
+		else{
+		mav.setViewName("securityAnswer");
+		return mav;}
+	}
+		
+	
+	
+	@RequestMapping(value="/SecurityAnswer", method= RequestMethod.POST)
+	public ModelAndView SecAns(HttpServletRequest request)
+	{
+		ModelAndView mav = new ModelAndView("securityAnswer");
+		
+        String userId = request.getParameter("username");
+		
+		User user = userDaoImpl.findById(userId);
+		
+		mav.addObject("user", user);
+		
+		return mav;
+	}
+	
+	
+	@RequestMapping(value="/updateUser" , method= RequestMethod.POST)
+	public ModelAndView update(HttpServletRequest request){
+		ModelAndView mav = new ModelAndView();
+		System.out.println("inside method");
+		 String userId = request.getParameter("email");
+		 User user = userDaoImpl.findById(userId);
+		 String pass= request.getParameter("password");
+		 
+		 user.setPassword(pass);
+		 System.out.println("after password");
+		 /*user.setAddrs1(user.getAddrs1());
+		 user.setAddrs2(user.getAddrs2());
+		 user.setPhone(user.getPhone());
+		 user.setSecurityQ(user.getSecurityQ());*/
+		 userDaoImpl.update(user);
+		 System.out.println("after user update");
+		mav.setViewName("login");
+		return mav;
 	}
 	
 	

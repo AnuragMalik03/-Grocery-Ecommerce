@@ -34,6 +34,8 @@
     border-top: 2px solid;
 }
 </style>
+
+
 </head>
 <body>
 
@@ -46,7 +48,7 @@
     <div class="row">
         <div class="col-xs-12">
         	<div class="invoice-title">
-    			<h2>Invoice</h2><h3 class="pull-right">Order # 12345</h3>
+    			<h2>Invoice</h2><h3 class="pull-right">Order # ${order.orderId }</h3>
     		</div>
     		<hr>
     		<div class="row">
@@ -54,20 +56,20 @@
     			<div class="col-xs-6">
     				<address>
     				<strong>Billed To:</strong><br>
-    					<br>
-    					${user.address}<br>
-    					${user.addrs1}<br>
-    					${user.city}<br>
-    					${c.state}
+    					${orderDetails.name}<br>
+    					${orderDetails.addrs1}<br>
+    					${orderDetails.addrs2}<br>
+    					${orderDetails.city} , ${orderDetails.state}<br>
+    					
     				</address>
     			</div>
     			<div class="col-xs-6 text-right">
     				<address>
         			<strong>Shipped To:</strong><br>
-    					Jane Smith<br>
-    					1234 Main<br>
-    					Apt. 4B<br>
-    					Springfield, ST 54321
+    					${list.shipName }<br>
+    					${list.shipadd1 }<br>
+    					${list.shipcity }<br>
+    					${list.shipstate }, ${list.shipzip }
     				</address>
     			</div>
     		</div>
@@ -75,8 +77,8 @@
     			<div class="col-xs-6">
     				<address>
     					<strong>Payment Method:</strong><br>
-    					Visa ending **** 4242<br>
-    					jsmith@email.com
+    					${order.payment}<br>
+    					${order.user}
     				</address>
     			</div>
     			<div class="col-xs-6 text-right">
@@ -107,42 +109,35 @@
                                 </tr>
     						</thead>
     						<tbody>
-    							<!-- foreach ($order->lineItems as $line) or some such thing here -->
+    					 <c:forEach var="c" items="${cart }">
     							<tr>
-    								<td>BS-200</td>
-    								<td class="text-center">$10.99</td>
-    								<td class="text-center">1</td>
-    								<td class="text-right">$10.99</td>
+    							
+    								<td><c:out value="${c.cartProductName }"></c:out></td>
+    								<td class="text-center">$<c:out value="${c.cartPrice }"></c:out></td>
+    								<td class="text-center"><c:out value="${c.cartQuantity }"></c:out></td>
+    								<td class="text-right">$<c:out value="${c.cartQuantity * c.cartPrice }"></c:out></td>
+    								<c:set var="gtot" value="${gtot +  c.cartQuantity * c.cartPrice}"></c:set>
     							</tr>
-                                <tr>
-        							<td>BS-400</td>
-    								<td class="text-center">$20.00</td>
-    								<td class="text-center">3</td>
-    								<td class="text-right">$60.00</td>
-    							</tr>
-                                <tr>
-            						<td>BS-1000</td>
-    								<td class="text-center">$600.00</td>
-    								<td class="text-center">1</td>
-    								<td class="text-right">$600.00</td>
-    							</tr>
-    							<tr>
+    							</c:forEach>
+                             <tr>
     								<td class="thick-line"></td>
     								<td class="thick-line"></td>
     								<td class="thick-line text-center"><strong>Subtotal</strong></td>
-    								<td class="thick-line text-right">$670.99</td>
+    								<td class="thick-line text-right">$<c:out value="${gtot }"></c:out></td>
     							</tr>
     							<tr>
     								<td class="no-line"></td>
     								<td class="no-line"></td>
     								<td class="no-line text-center"><strong>Shipping</strong></td>
-    								<td class="no-line text-right">$15</td>
+    								
+    								<td class="no-line text-right" id="ship"></td>
+    								
     							</tr>
     							<tr>
     								<td class="no-line"></td>
     								<td class="no-line"></td>
     								<td class="no-line text-center"><strong>Total</strong></td>
-    								<td class="no-line text-right">$685.99</td>
+    								<td class="no-line text-right" id="final">$</td>
     							</tr>
     						</tbody>
     					</table>
@@ -152,5 +147,21 @@
     	</div>
     </div>
 </div>
+<script type="text/javascript">
+
+var total = ${gtot};
+if (total < 500){
+	
+	
+	document.getElementById('ship').innerHTML  ='$'+ 25 ;
+	
+	document.getElementById('final').innerHTML  ='$' +(25 +total);
+	
+}else{
+	
+	document.getElementById('ship').innerHTML  = '$'+ 0;
+	document.getElementById('final').innerHTML  = '$' +total;
+}
+</script>
 </body>
 </html>

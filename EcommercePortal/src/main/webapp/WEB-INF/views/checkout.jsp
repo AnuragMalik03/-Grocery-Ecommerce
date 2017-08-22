@@ -49,17 +49,20 @@ function payment(){
 	    var carde = document.getElementById('radio2').checked ;
 		var code = document.getElementById('radio1').checked;
 		console.log('got id frm  payment ');
+		
 	    if ( code == false && carde == false ) {
 	    	
 	    	alert('Select Payment Option');
-	    	return false;
 	    	console.log('inside if of  payment ');
+	    	return false;
+	    	
 	       
 	    }else{
 	    	
 	    	console.log('inside of else  payment ');
 	    	alert('payment succesful')
 	    	return true;
+	    	
 	    }
 	    
 }
@@ -72,30 +75,22 @@ function clickmethod(){
 	    var card = document.getElementById('radio2').checked ;
 		var cod = document.getElementById('radio1').checked;
 		var disp = document.getElementById('pay');
+		var paym = document.getElementById('payment');
 	    
 		if(card == true){
-		console.log('inside if of method ');
+			console.log('inside if of method ');
 			
 	    	 disp.style.display = 'block';
-	    	
+	    	paym.value = 'CARD'; 
 	    	 document.getElementById('cardNumber').required = true ;
 	    	 document.getElementById('expiryMonth').required = true ;
 	    	 document.getElementById('expiryYear').required = true ;
 	    	 document.getElementById('cvv').required = true ; 
 	    	 
 	    }
-		else if(cod == true) {
-			
-	    	console.log('inside  of else method ');
+             	    	
+	   
 	    	
-	    	disp.style.display = 'none';
-	    	
-	    	 document.getElementById('cardNumber').required = false ;
-	    	 document.getElementById('expiryMonth').required = false ;
-	    	 document.getElementById('expiryYear').required = false ;
-	    	 document.getElementById('cvv').required = false ; 
-	    	
-	    }
 }
 
 </script>
@@ -106,14 +101,23 @@ function clickCod(){
 	
 	var cod = document.getElementById('radio1').checked;
 	var disp = document.getElementById('pay');
-	
+	var paym = document.getElementById('payment');
 	if(cod == true){
 		
-		
+		console.log('inside  of else method ');
+    	
+    	disp.style.display = 'none';
+    	
+    	paym.value = 'COD';
+    	
+    	 document.getElementById('cardNumber').required = false ;
+    	 document.getElementById('expiryMonth').required = false ;
+    	 document.getElementById('expiryYear').required = false ;
+    	 document.getElementById('cvv').required = false ; 
 	}
 }
 
-</script>
+</script> 
 <style type="text/css">
 .panel-title {display: inline;font-weight: bold;}
 .pl-ziro { padding-left: 0px; }
@@ -133,7 +137,7 @@ function clickCod(){
                         
                                 
                                          
-<form class="form-horizontal" action="${pageContext.request.contextPath }/cart/invoiceprocess" method="post"  onsubmit="return payment()" >
+<form class="form-horizontal" action="${pageContext.request.contextPath }/cart/invoiceprocess" method="post"  onsubmit="return payment();" name="myform" >
         
         <fieldset>
         <c:set var="gtot" value="0"></c:set>
@@ -241,7 +245,7 @@ function clickCod(){
           <div class="form-group">
             <label class="col-sm-2 control-label" for="textinput">First Name</label>
             <div class="col-sm-4">
-              <input type="text" name="sname" id="c1" placeholder="First Name" class="form-control">
+              <input type="text" name="sname" id="c1" placeholder="First Name" class="form-control" required>
             </div>
 
             <label class="col-sm-2 control-label" for="textinput">Last Name</label>
@@ -254,7 +258,7 @@ function clickCod(){
           <div class="form-group">
             <label class="col-sm-2 control-label" for="textinput">Line 1</label>
             <div class="col-sm-10">
-              <input type="text" name="sadd1" id="c2" placeholder="Address Line 1" class="form-control">
+              <input type="text" name="sadd1" id="c2" placeholder="Address Line 1" class="form-control" required>
             </div>
           </div>
 
@@ -262,14 +266,14 @@ function clickCod(){
           <div class="form-group">
             <label class="col-sm-2 control-label" for="textinput">Line 2</label>
             <div class="col-sm-10">
-              <input type="text" name="sadd2" id="c3" placeholder="Address Line 2" class="form-control">
+              <input type="text" name="sadd2" id="c3" placeholder="Address Line 2" class="form-control" required>
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-sm-2 control-label" for="textinput">City</label>
             <div class="col-sm-10">
-              <input type="text" placeholder="City" id="c4" name="scity" class="form-control">
+              <input type="text" placeholder="City" id="c4" name="scity" class="form-control" required>
             </div>
           </div>
 
@@ -277,12 +281,12 @@ function clickCod(){
           <div class="form-group">
             <label class="col-sm-2 control-label" for="textinput">State</label>
             <div class="col-sm-4">
-              <input type="text" placeholder="State" id="c5" name="sstate" class="form-control">
+              <input type="text" placeholder="State" id="c5" name="sstate" class="form-control" required>
             </div>
 
             <label class="col-sm-2 control-label" for="textinput">Postcode</label>
             <div class="col-sm-4">
-              <input type="text" placeholder="Post Code" id="c6" name="szip" class="form-control">
+              <input type="text" placeholder="Post Code" id="c6" name="szip" class="form-control" required>
             </div>
           </div>
 
@@ -290,13 +294,14 @@ function clickCod(){
                             <div class="pull-right">
                             <h4 class="item-text">Select Payment Options : -</h4>
                             <span>COD : </span>
-                           <input class="coupon_question" type="radio"  id="radio1" onclick="clickCod();" name="pay" value="no"/>
+                           <input class="coupon_question" type="radio"  id="radio1" onclick="clickCod();" name="pay" value="COD" />
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       <span>CARD : </span>
-                           <input class="coupon_question" type="radio"  id="radio2" onclick="clickmethod();" name="pay" value="yes"/>
+                           <input class="coupon_question" type="radio"  id="radio2" onclick="clickmethod();" name="pay" value="Card"/>
                                         
                                         </div>
                                         
  </div> 
+ <input type="hidden" id="payment" name="payment" value="COD">
    
 </div>
 
@@ -353,6 +358,14 @@ function clickCod(){
        </div>
              -->
 </div>
+
+<input type="hidden" name="productId" value="" class="form-control" >
+<input type="hidden" name="pName"  class="form-control" >
+<input type="hidden" name="stock" class="form-control">
+<input type="hidden" name="price"  class="form-control" >
+<input type="hidden" name="description"  class="form-control" >
+<input type="hidden" name="cid"  class="form-control" >
+<input type="hidden" name="cid"  class="form-control" >
 
 <button  type="submit" class="btn btn-success btn-lg btn-block" role="submit">Continue..</button>
 

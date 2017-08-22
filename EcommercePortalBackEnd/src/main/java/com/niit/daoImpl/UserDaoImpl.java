@@ -10,6 +10,7 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import com.niit.dao.UserDao;
+import com.niit.model.Address;
 import com.niit.model.Category;
 import com.niit.model.Product;
 import com.niit.model.User;
@@ -53,16 +54,13 @@ public class UserDaoImpl implements UserDao {
 	 
  }
  
-public List<User> retrieve(){
-	 
+ public void update(User user){
 	 Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		List<User> list = session.createQuery("from User").list();
-		
-		session.getTransaction().commit();
-		
-		return list;
-			  
-      }
+	 session.beginTransaction();
+	 session.update(user);
+	 session.getTransaction().commit();
+
+	  
+ }
  
 }

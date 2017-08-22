@@ -1,22 +1,27 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-              pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>   
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script> -->
   
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
                   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
      <script src="assets/js/jquery.js"></script>
    <script src="assets/js/jquery.min.js"></script>
-<title>Login Page</title>
+		
+		
+		
+<title>Password Reset</title>
 
-<style>
+	
+	<style>
 body
 {background: #eee url(http://subtlepatterns.com/patterns/sativa.png);}
 .login-container{
@@ -150,7 +155,6 @@ body
   animation-name: fadeInUp;
 }
 </style>
-
 </head>
 <body >
 <jsp:include page="header.jsp"></jsp:include>
@@ -160,45 +164,18 @@ body
             <div id="output"></div>
             <div class="avatar"></div>
             <div class="form-box">
-                <form "${pageContext.request.contextPath }/login" class="form-signin" method="post" >
+                <form  action="${pageContext.request.contextPath }/SecurityAnswer" class="form-signin" method="post" >
                 <span id="reauth-email" class="reauth-email"></span>
-                    <input name="username" type="text" placeholder="username" required>
-                    <input type="password" name="password" placeholder="password">
-                    
-                    <button class="btn btn-info btn-block login" type="submit">Login</button>
-                    <a class="pull-right" style="size:5px ; vertical-align:baseline;" href="<c:url value="/userName"/>">Forgot Password?</a>
+                <label> Email Id</label>
+                    <input name="username" type="text" id="username" placeholder="Enter Email" value="" required/>
+                                    
+                    <button class="btn btn-info btn-block login" type="submit">Next</button>
+                   
                 </form>
             </div>
         </div>
         
 </div>
-
-<%-- <div class="container">
-<center>Welcome to Login Page</center>
-<div class="card card-container">
-<h2 class='login_title text-center'>Login</h2>
-<hr>
-
-<form action="${pageContext.request.contextPath }/login" class="form-signin" method="post" >
-<span id="reauth-email" class="reauth-email"></span>
-<h4 class="input-title">Email</h4>
-<input type="text" id="inputEmail" name="username" class="login_box" placeholder="email" required />
-<h4 class="input-title">Password</h4>
-<input type="password" id="inputPassword" name="password" class="login_box" placeholder="********" required />
-
-<div id="remember" class="checkbox">
-<label>
-
-</label>
-</div>
-
-<button class="btn btn-lg btn-primary" type="submit">Submit</button>
-</form>
-</div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
-</div> --%>
-
-
-<br><br>
 
 </body>
 </html>
