@@ -45,6 +45,7 @@ function check_info(){
 	
 	if(pass == confirmPass)
 	{
+		console.log('inside if');
 		return true;
 		
 	}else{

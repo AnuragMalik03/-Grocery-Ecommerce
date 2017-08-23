@@ -56,11 +56,6 @@ public class CartController {
 	CartDaoImpl  cartDaoImpl;
 	
 	
-	@RequestMapping("/cart")
-	public String addPage(){
-		return "cart";
-	}
-	
 	@RequestMapping(value="/addToCart" , method=RequestMethod.POST)
 	public ModelAndView addToCart(HttpServletRequest req)
 	{
@@ -132,23 +127,25 @@ public class CartController {
 		Double total= Double.parseDouble(request.getParameter("total"));
 		String payment= request.getParameter("payment");
 
-		String ShipName = request.getParameter("sname");
-		String Shipadd1 = request.getParameter("sadd1");
-		String Shipadd2 = request.getParameter("sadd2");
-		String Shipcity = request.getParameter("scity");
-		String Shipstate = request.getParameter("sstate");
-		String Shipzip = request.getParameter("szip");
+		String shipName = request.getParameter("sname");
+		String shipadd1 = request.getParameter("sadd1");
+		String shipadd2 = request.getParameter("sadd2");
+		String shipcity = request.getParameter("scity");
+		String shipstate = request.getParameter("sstate");
+		String shipzip = request.getParameter("szip");
+			
 		List<String> list = new ArrayList<String>();
-		list.add(ShipName);
-		list.add(Shipadd1);
-		list.add(Shipadd2);
-		list.add(Shipcity);
-		list.add(Shipstate);
-		list.add(Shipzip);
+		list.add(shipName);
+		list.add(shipadd1);
+		list.add(shipadd2);
+		list.add(shipcity);
+		list.add(shipstate);
+		list.add(shipzip);
 		mav.addObject("list", list);
-		
+		System.out.println("after list creation");
 		User user= userDaoImpl.findById(userEmail);
 		List<Cart> cart = cartDaoImpl.findCartById(userEmail);
+		System.out.println(cart);
 		ord.setUser(user);
 		ord.setTotal(total);
 		ord.setPayment(payment);
@@ -156,30 +153,11 @@ public class CartController {
         mav.addObject("order", ord);
         mav.addObject("cart", cart);
         mav.addObject("orderDetails", user);
-/*     List<Product> prod = productDaoImpl.getProdById(pid); 
-		for (Cart cartItem : cart) {
-
-			qty = cartItem.getQuantity(); // Finding total quantities purchased
-											// by user.
-			Product product = cartItem.getProduct();
-            
-			int ProductQuantity = product.getQuantity();
-			
-			if(qty==ProductQuantity)
-			{
-				product.setQuantity(0);
-			}
-            
-			if(qty!=ProductQuantity)
-			{
-			product.setQuantity(ProductQuantity - qty);
-			}
-			
-			productService.updateProduct(product);
-
-		}*/
+       
+     
+		
         return mav;
-	 }
+	 }	
         
 
 /*@RequestMapping(value="/addAddress" , method=RequestMethod.GET)
@@ -232,6 +210,38 @@ public ModelAndView saveAddress(HttpServletRequest req ){
 	List<Cart> cart = cartDaoImpl.findCartById(userEmail);
 	mav.addObject("user", user);
 	mav.addObject("cart", cart);
+	
+	for (Cart cartItem : cart) {
+
+		System.out.println("inside forEach loop");
+		
+		int pid = cartItem.getCartProductId();
+		System.out.println("after getting cart product id for a particular product");
+		Product prod = productDaoImpl.findById(pid) ;
+		System.out.println("after getting pid from product table ");
+		int stock = prod.getStock();
+		System.out.println("after getting stock from product table");
+		int qty = cartItem.getCartQuantity(); // Finding total quantities purchased
+										// by user.
+					
+		System.out.println("after getting quantity");
+		
+					
+		if(qty == stock)
+		{
+			prod.setStock(0);
+			System.out.println("inside if block");
+		}
+        
+		if(qty!=stock)
+		{
+		prod.setStock(stock - qty);
+		System.out.println("inside another if block");
+		}
+		
+		productDaoImpl.update(prod);
+
+	}
 	return mav;
     }
     
@@ -260,7 +270,29 @@ public ModelAndView saveAddress(HttpServletRequest req ){
        return mv;
    
     
- }     
+ }  
+   
+   @RequestMapping("/thankYou")
+   public ModelAndView thankyou( HttpServletRequest req) 
+    {
+	   ModelAndView mv= new ModelAndView();
+	   Principal principal = req.getUserPrincipal();
+	   String userEmail =principal.getName();
+	   User user =userDaoImpl.findById(userEmail);
+		
+	  List<Cart> cart = cartDaoImpl.findCartById(userEmail);
+	 
+	  for(Cart cartItem : cart){
+	  int id = cartItem.getCartId();
+	  cartDaoImpl.deleteCart(id);
+	
+	  }
+       
+       mv.setViewName("thanks");
+       return mv;
+   
+    
+ }  
  
    
 }

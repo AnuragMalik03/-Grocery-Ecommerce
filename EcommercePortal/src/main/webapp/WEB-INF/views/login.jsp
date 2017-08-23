@@ -160,7 +160,7 @@ body
             <div id="output"></div>
             <div class="avatar"></div>
             <div class="form-box">
-                <form "${pageContext.request.contextPath }/login" class="form-signin" method="post" >
+                <form action="${pageContext.request.contextPath }/login" class="form-signin" method="post" >
                 <span id="reauth-email" class="reauth-email"></span>
                     <input name="username" type="text" placeholder="username" required>
                     <input type="password" name="password" placeholder="password">

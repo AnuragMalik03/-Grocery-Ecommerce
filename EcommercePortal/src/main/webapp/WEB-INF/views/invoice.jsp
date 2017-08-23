@@ -61,15 +61,24 @@
     					${orderDetails.addrs2}<br>
     					${orderDetails.city} , ${orderDetails.state}<br>
     					
+    					
     				</address>
     			</div>
     			<div class="col-xs-6 text-right">
     				<address>
         			<strong>Shipped To:</strong><br>
-    					${list.shipName }<br>
-    					${list.shipadd1 }<br>
+        			<c:forEach items="${list }" var="l">
+    					
+    					${l }<br>
+    					</c:forEach>
+    					<%-- <c:out value="${list.shipName }"></c:out>  <br>
+    					<c:out value="${list.shipadd1 }"></c:out>  <br>
+    					<c:out value="${list.shipadd2 }"></c:out>  <br>
+    					<c:out value="${list.shipcity }"></c:out>  <br>
+    					<c:out value="${list.shipstate }"></c:out>  <br> --%>
+    					<%-- ${list.shipadd1 }<br>
     					${list.shipcity }<br>
-    					${list.shipstate }, ${list.shipzip }
+    					${list.shipstate }, ${list.shipzip } --%>
     				</address>
     			</div>
     		</div>
@@ -145,6 +154,7 @@
     			</div>
     		</div>
     	</div>
+    	<a href="<c:url value="/cart/thankYou"/>"> Finish</a>
     </div>
 </div>
 <script type="text/javascript">

@@ -54,10 +54,12 @@ public List<Product> retrieve(){
 		 session.beginTransaction();
 		 p= session.get(Product.class, pid);
 		 session.getTransaction().commit();
+		 session.close();
 	} catch (HibernateException ex) {
 		
 		ex.printStackTrace();
 		session.getTransaction().rollback();
+		session.close();
 	}
 	 
 	 return p;
@@ -83,10 +85,15 @@ public List<Product> retrieve(){
 	 }
  
  public void update(Product p){
+System.out.println("inside update product 1");
 	 Session session = sessionFactory.openSession();
+	 System.out.println("inside update product 2");
 	 session.beginTransaction();
+	 System.out.println("inside update product 3");
 	 session.update(p);
+	 System.out.println("inside update product 4");
 	 session.getTransaction().commit();
+	 System.out.println("inside update product last ");
 
 	  
  }

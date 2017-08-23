@@ -434,7 +434,7 @@ hr{
 	<td>
 	          <a class="btn btn-danger" role="button"  href="<c:url value="/cart/deleteCart/${c.cartId}"/>">Delete</a></td>
 	       
-	          <c:set var="gtot" value="${gtot +  c.cartQuantity * c.cartPrice}"></c:set>
+	          <c:set var="gtot" value="${gtot + c.cartPrice * c.cartQuantity }"></c:set>
 	</tr>
 	</c:forEach>
 	

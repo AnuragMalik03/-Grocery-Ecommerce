@@ -53,6 +53,7 @@ public class CartDaoImpl implements CartDao {
 	}
 	
 	
+	
 	public Cart getCartById(int cartId , String userEmail){
 		 Session session = sessionFactory.openSession();
 		 Cart c = null;
@@ -77,15 +78,15 @@ public class CartDaoImpl implements CartDao {
 		 }
 	 
 	 public void update(Cart cr){
+		 System.out.println("reachead inside update cart");
 		 Session session = sessionFactory.openSession();
-		 try{
+		
 		 session.beginTransaction();
 		 session.update(cr);
-		 }catch (HibernateException ex) {
-			 ex.printStackTrace();
-			 session.getTransaction().rollback();
+		 session.getTransaction().commit();
+		 System.out.println("reachead end of  update cart");
+		
 		}
-	  }
 
 	
 }

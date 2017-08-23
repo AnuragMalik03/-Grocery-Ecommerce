@@ -75,7 +75,9 @@
     <c:if test="${empty productList }"><tr><td colspan="9"  align="center">No Record Exists</td></tr></c:if>
 
     <c:forEach var="c" varStatus="st" items="${productList }">
+    
 	<tr>
+	<%-- <c:if test="${c.stock } > 0"> --%>
 	<td><c:out value="${st.count }"></c:out></td>
 	<td><c:out value="${c.id }"></c:out></td>
 	<td><c:out value="${c.name }"></c:out></td>
@@ -91,8 +93,9 @@
 	<c:set var="contextRoot" value="${pageContext.request.contextPath }"></c:set>
 	<a class="btn btn-info" role="button"  href="<c:url value="/productDetail/${c.id }"/>"><i class="fa fa-info-circle"></i></a>
 	</td>
-	
+	<%-- </c:if> --%>
 	</tr>
+	
 	</c:forEach>
 	</tbody>
 	
