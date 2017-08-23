@@ -74,28 +74,29 @@
     <tbody>
     <c:if test="${empty productList }"><tr><td colspan="9"  align="center">No Record Exists</td></tr></c:if>
 
-    <c:forEach var="c" varStatus="st" items="${productList }">
-    
+    <c:forEach var="p" varStatus="st" items="${productList }">
+    <%-- <c:set var="total" value="0" ></c:set> --%>
+    <c:if test="${p.stock gt 0}">
 	<tr>
-	<%-- <c:if test="${c.stock } > 0"> --%>
+	
 	<td><c:out value="${st.count }"></c:out></td>
-	<td><c:out value="${c.id }"></c:out></td>
-	<td><c:out value="${c.name }"></c:out></td>
-	<td><c:out value="${c.brand.brandName }"></c:out></td>
-	<td><c:out value="${c.supplier.supplierName }"></c:out></td>
-	<td><c:out value="${c.stock }"></c:out></td>
-	<td><c:out value="${c.category.name }"></c:out></td>
-	<td><c:out value="${c.price }"></c:out></td>
-	<td class="span2"><c:out value="${c.description }"></c:out></td>
-	<td><img src="${pageContext.request.contextPath }/resources/${c.imgName}" height="60px" width="60px"></td>
+	<td><c:out value="${p.id }"></c:out></td>
+	<td><c:out value="${p.name }"></c:out></td>
+	<td><c:out value="${p.brand.brandName }"></c:out></td>
+	<td><c:out value="${p.supplier.supplierName }"></c:out></td>
+	<td><c:out value="${p.stock }"></c:out></td>
+	<td><c:out value="${p.category.name }"></c:out></td>
+	<td><c:out value="${p.price }"></c:out></td>
+	<td class="span2"><c:out value="${p.description }"></c:out></td>
+	<td><img src="${pageContext.request.contextPath }/resources/${p.imgName}" height="60px" width="60px"></td>
 	
 	<td>
 	<c:set var="contextRoot" value="${pageContext.request.contextPath }"></c:set>
 	<a class="btn btn-info" role="button"  href="<c:url value="/productDetail/${c.id }"/>"><i class="fa fa-info-circle"></i></a>
 	</td>
-	<%-- </c:if> --%>
-	</tr>
 	
+	</tr>
+	</c:if>
 	</c:forEach>
 	</tbody>
 	
