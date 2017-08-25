@@ -5,29 +5,35 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script> -->
+
+  <%@ include file="header.jsp" %>
   
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-     <script src="assets/js/jquery.js"></script>
-   <script src="assets/js/jquery.min.js"></script>
-<title>Admin Page</title>
+<title>Admin Product List</title>
+<style type="text/css">
+
+table, td ,tr {
+text-align:center; 
+  vertical-align:middle;
+    
+} 
+
+</style>
 </head>
 <body>
 
-	<jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
+<br>
+<br>
 	
-	<br>
-	<br>
 	<div class="container">
-	<h2>Product List</h2>
+	<div class="page-header">
+  <h1>All Products</h1>
+</div>
+	
 	
 	<table class="table table-hover table-bordered" id="category" class="display" border="1" width="80" align="center">
+	
 	<tr>
-	<th>Sr No.</th><th>PID</th><th>Name</th><th>Brand</th><th>Supplier</th><th>Stock</th><th>Category</th><th>Price</th><th style="width:15">Description</th>
+	<th>#</th><th>PID</th><th>Name</th><th>Brand</th><th>Supplier</th><th>Stock</th><th>Category</th><th>Price</th><th style="width:15">Description</th>
 	<th>Image</th><th class="span2">Action</tr>
 	
 	<c:if test="${empty productList }"><tr><td colspan="9"  align="center">No Record Exists</td></tr></c:if>
@@ -46,8 +52,8 @@
 	<td><img src="${pageContext.request.contextPath }/resources/${c.imgName}" height="60px" width="60px"></td>
 	<td>
 	<c:set var="contextRoot" value="${pageContext.request.contextPath }"></c:set>
-	               <a class="btn btn-info" role="button"  href="<c:url value="/admin/deleteProduct/${c.id }"/>"><i class="fa fa-trash"></i></a>
-	               <a class="btn btn-info" role="button" href="${contextRoot }/admin/updateProduct?id=<c:out value="${c.id}"></c:out>">Update</a>
+	               <a class="btn btn-info" role="button"  href="<c:url value="/admin/deleteProduct/${c.id }"/>"><i class="glyphicon glyphicon-trash"></i></a>
+	               <a class="btn btn-info" role="button" href="${contextRoot }/admin/updateProduct?id=<c:out value="${c.id}"></c:out>"><i class="glyphicon glyphicon-edit"></i></a>
 	
 	</td>
 	
@@ -55,6 +61,7 @@
 	</c:forEach>
 	
 	</table>
+	
 	</div>
 
 </body>

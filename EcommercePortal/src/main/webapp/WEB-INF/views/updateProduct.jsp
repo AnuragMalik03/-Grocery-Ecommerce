@@ -203,7 +203,7 @@ body{
 			    				<div class="col-xs-6 col-sm-6 col-md-6">
 			    					<div class="form-group">
 			    					<label class="cols-sm-2 control-label">Product Brand</label>
-			    					<select name="pSupplier" class="form-control input-sm">
+			    					<select name="pBrand" class="form-control input-sm">
 											<option value="">----Select Brand----</option> 
 												<c:forEach items="${brdList}" var="brand"> 
 														<option value="${brand.bid}">${brand.brandName}</option>

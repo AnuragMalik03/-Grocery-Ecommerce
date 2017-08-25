@@ -27,10 +27,12 @@ public class User implements Serializable {
 	@NotEmpty(message="Enter the Email")
 	private String email;
 	@NotEmpty(message="Enter the name")
+	@Pattern(regexp="^[A-Za-z]+$" , message="Plese Enter Characters Only")
 	private String name;
 	
 	@NotNull(message="Password is Null")
 	@Size(min=8 , max=12 , message="Password should be more than 8 characters and less than 12")
+	@Pattern(regexp="^[A-Za-z0-9]+$" , message="Plese Enter Digits")
 	private String password;
 	@NotNull(message="Address can not be left Blank")
 	@Size(min=3 , max=4 , message="Enter a valid appartment No")
@@ -48,8 +50,8 @@ public class User implements Serializable {
 	/*@NotNull(message="Adderess is Null")
 	private String address;*/
 	
-	@NotNull
-	@Pattern(regexp="^[A-Za-z0-9]+$" , message="Plese Enter Digits")
+	@NotNull(message="mobile number can not be left Blank")
+	@Pattern(regexp="(^[987]$|[0-9]{10})" , message="Plese Enter Valid Phone Number")
 	@Size(min=8 , max=10 , message="Enter Correct Phone")
 	private String phone;
 	private boolean enabled = true;

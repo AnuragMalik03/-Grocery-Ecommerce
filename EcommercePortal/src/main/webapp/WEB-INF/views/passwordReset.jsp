@@ -6,15 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script> -->
-  
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-     <script src="assets/js/jquery.js"></script>
-   <script src="assets/js/jquery.min.js"></script>
+
 		
 		
 		
@@ -48,12 +40,12 @@ function change(){
 	var showp = document.getElementById('eye');
 	 
 	if(icon == 's'){
-		showp.innerHTML = '<i class="fa fa-eye-slash"></i>';
+		showp.innerHTML = '<span class="glyphicon glyphicon-eye-close"  aria-hidden="true"></span>';
 		pass.type = "text";
 		icon = 'noS'
 		
 	}else{
-		showp.innerHTML = '<i class="fa fa-eye"></i>';
+		showp.innerHTML = '<span class="glyphicon glyphicon-eye-open"  aria-hidden="true"></span>';
 		pass.type = "password";
 		icon ='s';
 	}
@@ -61,26 +53,25 @@ function change(){
 	
 }
 
+
 </script>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
+<jsp:include page="header.jsp"></jsp:include>
 	
-	<br>
-	<br>
-	<br>
-	<br>
+
 	
 	
 	
-	<div class="container">
+	<div class="container" style="padding-top: 80px;">
 			<div class="row main">
+			
 				<div class="main-login main-center">
 				
 					<f:form action="${pageContext.request.contextPath }/updateUser" method="post"  onsubmit="return check_info()">
 					<fieldset>
-						<div class="col-md-6  col-sm-6  col-xs-12">
-						<h3> Registration </h3>
+						<div class="col-md-4 col-md-offset-4  col-sm-6  col-xs-12" >
+						<h3> Update Password </h3>
 						<%-- <div class="form-group has-error has-feedback has-success">
 							<label for="name" class="cols-sm-2 control-label">First Name</label>
 							<div class="cols-sm-10">
@@ -93,13 +84,14 @@ function change(){
 						</div> --%>
 						
 
-						<div class="form-group has-error has-feedback has-success">
+						<div class="form-group">
 							<label for="email" class="cols-sm-2 control-label">Your Email</label>
 							<div class="cols-sm-10">
 							<f:errors path="email" cssClass="err"/>
 								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+									<span class="input-group-addon" id="basic-addon2">@</span>
 									<input type="text" class="form-control" value="${user.email }" name="email" path="email" readonly/>
+									
 								</div>
 							</div>
 						</div>
@@ -115,26 +107,30 @@ function change(){
 							</div>
 						</div> --%>
 
-						<div class="form-group has-error has-feedback has-success">
+						<div class="form-group ">
 							<label for="password" class="cols-sm-2 control-label">Password</label>
 							<div class="cols-sm-10">
 							<f:errors path="password" cssClass="err"/>
 								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<span class="input-group-addon"><span class="glyphicon glyphicon-lock"  aria-hidden="true"></span></span>
+							
 									<input type="password" class="form-control" id="password" name="password" path="password" required="required" placeholder="Enter your Password"/>
-								    <span class="input-group-addon" id="eye" onclick="change()"><i class="fa fa-eye"></i></span>
+								    <!-- <span class="input-group-addon" id="eye" onclick="change()"><i class="fa fa-eye"></i></span> -->
+								    <span class="input-group-addon" id="eye" onclick="change()"><span class="glyphicon glyphicon-eye-open"  aria-hidden="true"></span></span>
 								</div>
 							</div>
 						</div>
 						
-						<div class="form-group  has-error has-feedback has-success ">
+						<div class="form-group ">
 							<label for="password" class="cols-sm-2 control-label"> Confirm Password</label>
 							<div class="cols-sm-10">
 							
 								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<span class="input-group-addon"><span class="glyphicon glyphicon-lock"  aria-hidden="true"></span></span>
+							
 									<input type="password" class="form-control" id="confirmPassword" name="confirmpassword" required="required" placeholder="Confirm your Password"/>
-								     <span class="input-group-addon" id="eye2"><i class="fa fa-eye"></i></span>
+								    <!-- <span class="input-group-addon" id="eye2" onclick="hide()"><span class="glyphicon glyphicon-eye-open"  aria-hidden="true"></span></span> -->
+							
 								</div>
 							</div>
 						</div>
@@ -232,12 +228,13 @@ function change(){
 						</div> --%>
 					
 
+                        <div class="form-group ">
+							<button type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button">Update</a>
+						</div>
 						
 						</div> 
 						</fieldset>
-						<div class="form-group ">
-							<button type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button">Update</a>
-						</div>
+						
 					</f:form>
 				</div>
 			</div>

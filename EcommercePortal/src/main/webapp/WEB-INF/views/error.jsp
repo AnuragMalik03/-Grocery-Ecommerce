@@ -8,6 +8,21 @@
 <title>Error Page</title>
 </head>
 <body>
-<h3>Invalid Input <a href="<c:url value="/"/>">Home Page</a></h3>
+
+<jsp:include page="header.jsp"></jsp:include>
+<br>
+<br><br>
+<br><br>
+<br>
+<div class="container">
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+<h3>Sorry ! You are not Authorised to Access This Page</h3> 
+<div style="text-align:center">
+<a href="<c:url value="/"/>"><h2>Home Page</h2></a>
+</div>
+</div>
+</div>
+</div>
 </body>
 </html>

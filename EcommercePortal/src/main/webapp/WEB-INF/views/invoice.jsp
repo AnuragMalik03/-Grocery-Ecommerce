@@ -5,18 +5,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<!--   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script> -->
-   
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-     <script src="assets/js/jquery.js"></script>
-   <script src="assets/js/jquery.min.js"></script>
+
+  <%@ include file="header.jsp" %>
+  
 <title>Invoice Page</title>
 
 <style type="text/css">
+.invoice-title {
+padding-top : 80px;
+}
 
 .invoice-title h2, .invoice-title h3 {
     display: inline-block;
@@ -39,10 +36,9 @@
 </head>
 <body>
 
-	<jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
 	
-	<br>
-	<br>
+	
+	
 	
 	<div class="container">
     <div class="row">
@@ -59,7 +55,9 @@
     					${orderDetails.name}<br>
     					${orderDetails.addrs1}<br>
     					${orderDetails.addrs2}<br>
-    					${orderDetails.city} , ${orderDetails.state}<br>
+    					${orderDetails.city} <br>
+    					 ${orderDetails.state}<br>
+    					  ${orderDetails.zip}
     					
     					
     				</address>
@@ -154,7 +152,7 @@
     			</div>
     		</div>
     	</div>
-    	<a href="<c:url value="/cart/thankYou"/>"> Finish</a>
+    	<a class="btn btn-primary pull-right" href="<c:url value="/cart/thankYou"/>"> Finish</a>
     </div>
 </div>
 <script type="text/javascript">

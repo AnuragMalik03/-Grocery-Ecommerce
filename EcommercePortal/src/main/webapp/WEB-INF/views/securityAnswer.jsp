@@ -6,16 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script> -->
-  
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-     <script src="assets/js/jquery.js"></script>
-   <script src="assets/js/jquery.min.js"></script>
-		
 		
 		
 <title>Password Reset</title>
@@ -182,7 +172,7 @@ function check(){
 
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
+<jsp:include page="header.jsp"></jsp:include>
 	
 <div class="container">
 	<div class="login-container">
@@ -193,7 +183,7 @@ function check(){
                 <span id="reauth-email" class="reauth-email"></span>
                     <input name="username" type="hidden" value="${user.email }" />
                     <input type="text" name="securityQ" value="${user.securityQ }">
-                    <input type="text" name="answer" id="answer" placeholder="Security Answer" value="" required>
+                    <input type="password" name="answer" id="answer" placeholder="Security Answer" value="" required>
                     
                     <button class="btn btn-info btn-block" type="submit">Submit</button>
                </form>

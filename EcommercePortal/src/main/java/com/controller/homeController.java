@@ -88,7 +88,7 @@ public class homeController {
 	@RequestMapping("/contact")
 	public String contact(){
 	
-	return "contactus";
+	return "contact";
 }
 	
 	/*@RequestMapping("/gotologin")

@@ -5,37 +5,34 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<!--   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-     <script src="assets/js/jquery.js"></script>
-   <script src="assets/js/jquery.min.js"></script> -->
+
+  <%@ include file="header.jsp" %>
+    
+   
 <title>Admin Page</title>
 </head>
 <body>
 
-	<jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
-	<br>
-	<br>
+	<%-- <jsp:include page="header.jsp"></jsp:include> --%>
 	
-	
-	
-
 		<div class="container">
+		<br>
+		<br>
+		
 			<div class="row">
+			
+			<div class="page-header">
+  <h1>Manage Products <small>(Category , Brand , Supplier , Products)</small></h1>
+</div>
 				<div clss="col-md-8">
 
 					<div class="row">
 						
-							<ul class="nav nav-pills nav-fill">
-								<li class="nav-item active"><a class="nav-link" href="#tab1primary" data-toggle="tab">Category</a></li>
-								<li class="nav-item "><a class="nav-link" href="#tab2primary" data-toggle="tab">Supplier</a></li>
-								<li class="nav-item "><a class="nav-link" href="#tab3primary" data-toggle="tab">Products</a></li>
-								<li class="nav-item "><a  class="nav-link" href="#tab4primary" data-toggle="tab">Brand</a></li>
+							<ul class="nav nav-tabs nav-justified">
+								<li class="active"><a  href="#tab1primary" data-toggle="tab">Category</a></li>
+								<li><a  href="#tab2primary" data-toggle="tab">Supplier</a></li>
+								<li><a   href="#tab4primary" data-toggle="tab">Brand</a></li>
+								<li><a  href="#tab3primary" data-toggle="tab">Products</a></li>
 							</ul>
 						
 
@@ -46,10 +43,10 @@
 								<form method="post" action="<c:url value="/admin/savecat"/>"
 									class="form-signin">
 									<span id="reauth-email" class="reauth-email"></span>
-									<h4 class="input-title">Category ID</h4>
-									<input class="form-control" type="number" name="cid" required />
+									
 									<h4 class="input-title">Category Name</h4>
 									<input class="form-control" type="text" name="name" required />
+									<br>
 									<button class="btn btn-lg btn-primary" type="submit">Save</button>
 									<button class="btn btn-lg btn-primary" type="reset">Cancel</button>
 
@@ -61,11 +58,9 @@
 								<form method="post" action="<c:url value="/admin/savesupp"/>"
 									class="form-signin">
 									<span id="reauth-email" class="reauth-email"></span>
-									<h4 class="input-title">Supplier ID</h4>
-									<input class="form-control" type="number" name="sid" required />
+									
 									<h4 class="input-title">Supplier Name</h4>
-									<input class="form-control" type="text" name="supplierName"
-										required />
+									<input class="form-control" type="text" name="supplierName"	required />
 									<button class="btn btn-lg btn-primary" type="submit">Save</button>
 									<button class="btn btn-lg btn-primary" type="reset">Cancel</button>
 
@@ -82,19 +77,28 @@
 									<h4 class="input-title">Supplier Name</h4>
 									<input class="form-control" type="text" name="supplierName"
 										required /> -->
-										<h4 class="input-title">Brand Name</h4>
+										<div class="form-group">
+										 <label class="col-sm-2 control-label" for="textinput">Brand Name</label>
+										 <div class="col-sm-12">
 									<input class="form-control" type="text" name="brandName"
 										required />
+										</div>
+										</div>
+										<br><br>
 										<div class="fileinput fileinput-new" data-providers="fileinput">
-										<tr>
-											<td>Image</td>
-											<td><input class="form-control" type="file" name="file"	accept="image/*"></td>
-										</tr>
+										<div class="form-group">
+											<label class="col-sm-2 control-label" for="textinput">Image</label>
+											<div class="col-sm-12"><input class="form-control" type="file" name="file"	accept="image/*"></div>
+										</div>
 
 									</div>
-									<button class="btn btn-lg btn-primary" type="submit">Save</button>
-									<button class="btn btn-lg btn-primary" type="reset">Cancel</button>
-
+									 <div class="form-group">
+                                    <div class="col-sm-12 ">
+                                    <br>
+									   <button class="btn btn-lg btn-primary" type="submit">Save</button>
+									   <button class="btn btn-lg btn-primary" type="reset">Cancel</button>
+									</div>
+								</div>
 								</form>
 
 							</div>
@@ -103,69 +107,88 @@
 								<form method="post" action="<c:url value="/admin/saveProduct"/>"	class="form-signin" enctype="multipart/form-data">
 									<span id="reauth-email" class="reauth-email"></span>
 
+              <div class="form-group">
+            <label class="col-sm-2 control-label" for="textinput">Product Name :</label>
+            <div class="col-sm-4">
+             <input type="text" name="pname" required />
+            </div>
+            
+             <label class="col-sm-2 control-label" for="textinput">Product Price :</label>
+            <div class="col-sm-4">
+             <input type="text" name="pPrice" />
+            </div>
+            </div>
+            <br><br><br>
+						 <div class="form-group">
+            <label class="col-sm-2 control-label" for="textinput">Product Description :</label>
+            <div class="col-sm-4">
+             <input type="text" name="pDescription" />
+            </div>
+            
+             <label class="col-sm-2 control-label" for="textinput">Product Stock :</label>
+            <div class="col-sm-4">
+             <input type="text" name="pStock" />
+            </div>
+            </div>		
+									
+									
 
-									<tr>
-										<td>Product Name :</td>
-										<td><input type="text" name="pname" required /></td>
-									</tr>
-									<tr>
-										<td>Product Price :</td>
-										<td><input type="text" name="pPrice" /></td>
-									</tr>
-									<tr>
-										<td>Product Description :</td>
-										<td><input type="text" name="pDescription" /></td>
-									</tr>
-									<tr>
-										<td>Product Stock :</td>
-										<td><input type="text" name="pStock" /></td>
-									</tr>
-
+<br>
+									<br>
 									<div class="form-group">
-										<td>Select Category</td>
-										<td><select class="form-control" name="pCategory"
+										<label class="col-sm-2 control-label" >Select Category</label>
+										<div class="col-sm-12"><select class="form-control" name="pCategory"
 											required>
 												<option>----Category----</option>
 												<c:forEach items="${catList}" var="cat">
 													<option value="${cat.cid}">${cat.name}</option>
 												</c:forEach>
 										</select>
+										</div>
 									</div>
+									
+									<br>
 
 									<div class="form-group">
-										<td>Select Supplier</td>
-										<td><select class="form-control" name="pSupplier"
+										<label class="col-sm-2 control-label" >Select Supplier</label>
+										<div class="col-sm-12"><select class="form-control" name="pSupplier"
 											required>
 												<option>----Supplier----</option>
 												<c:forEach items="${satList}" var="sate">
 													<option value="${sate.sid}">${sate.supplierName}</option>
 												</c:forEach>
 										</select>
+										</div>
 									</div>
 									<div class="form-group">
-										<td>Select Brand</td>
-										<td><select class="form-control" name="pBrand"
+										<label class="col-sm-2 control-label" >Select Brand</label>
+										<div class="col-sm-12"><select class="form-control" name="pBrand"
 											required>
 												<option>----Brand----</option>
 												<c:forEach items="${brdList}" var="bro">
 													<option value="${bro.bid}">${bro.brandName}</option>
 												</c:forEach>
 										</select>
+										</div>
 									</div>
 									<br>
 									<div class="fileinput fileinput-new" data-providers="fileinput">
-										<tr>
-											<td>Image</td>
-											<td><input class="form-control" type="file" name="file"	accept="image/*"></td>
-										</tr>
+										<div class="form-group">
+											<label class="col-sm-2 control-label" >Image</label>
+											<div class="col-sm-12"><input class="form-control" type="file" name="file"	accept="image/*"></div>
+										</div>
 
 									</div>
 
+<br>
 
-
-
-									<button class="btn btn-lg btn-primary" type="submit">Save</button>
-									<button class="btn btn-lg btn-primary" type="reset">Cancel</button>
+                                  <div class="form-group">
+                                    <div class="col-sm-12 ">
+                                    <br>
+									   <button class="btn btn-lg btn-primary" type="submit">Save</button>
+									   <button class="btn btn-lg btn-primary" type="reset">Cancel</button>
+									</div>
+								</div>
 								</form>
 
 							</div>

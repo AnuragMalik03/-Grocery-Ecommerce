@@ -9,15 +9,7 @@
   <title>Online shopping</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-      <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script> -->
-  
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-     <script src="assets/js/jquery.js"></script>
-   <script src="assets/js/jquery.min.js"></script>
+
   <style>
   .item {
     height: 50vh;
@@ -42,72 +34,95 @@ border-radius: 8px;
 </head>
 <body>
 
-
-<!-- <div id="fakeLoader"></div> -->
 <jsp:include page="header.jsp"></jsp:include>
 <br>
 <br>
-<br>
-<div class="container">
+
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner" role="listbox">
-   <div class="item active" style="background-image: url('http://placehold.it/1900x1080')">
-  
-  <div class="carousel-caption d-none d-md-block">
-    <h3>...</h3>
-    <p>...</p>
-  </div>
-</div>
-  <div class="item" style="background-image: url('http://placehold.it/1900x1080')">
-  
-  <div class="carousel-caption d-none d-md-block">
-    <h3>...</h3>
-    <p>...</p>
-  </div>
-</div>
-    <div class="item" style="background-image: url('http://placehold.it/1900x1080')">
-  
-  <div class="carousel-caption d-none d-md-block">
-    <h3>...</h3>
-    <p>...</p>
-  </div>
-</div>
- 
-  <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-</div>
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active"style="background-image: url('assets/images/Patanjali1.jpg')">
+          
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Patanjali.</h1>
+              <%-- <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p> --%>
+            </div>
+          </div>
+        </div>
+        <div class="item" style="background-image: url('assets/images/grocery-banner.jpg')">
+          <!-- <img class="second-slide" src="http://placehold.it/1900x1080" alt="Second slide"> -->
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Best in Quality</h1>
+              <!-- <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p> -->
+            </div>
+          </div>
+        </div>
+        <div class="item" style="background-image: url('assets/images/fruits-banner.jpg')">
+          <!-- <img class="third-slide" src="http://placehold.it/1900x1080" alt="Third slide"> -->
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Delicious Fresh Fruits</h1>
+             <!--  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
 
 
 
-<br>
 <div class="container">
-<div class="row">
+<h3 style="text-align:center;border-bottom:solid 1px #eee">Choose From Categories</h3>
+<c:forEach var="cc" items="${catList }">
+<div class="col-md-6 col-sm-12 col-lg-6">
+<div class="panel">
+<div class="panel-body">
+<div style="text-align:center;">
+<a class="thumbnail" alt="" href="<c:url value="productCustList?cid=${cc.cid}"/>"><h2>${cc.name }</h2></a>
+</div>
+</div>
+</div>
+
+</div>
+</c:forEach>
+</div>
+
+<br>
+
+<div class="container">
 <h3 style="text-align:center;border-bottom:solid 1px #eee">Top Brands</h3>
-<span id="slider"> 
-<img src="http://placehold.it/256x180" alt="Image">
-<img src="http://placehold.it/256x180" alt="Image">
+<c:forEach var="bb" items="${broList }">
+<div class="col-md-3 col-sm-4 col-lg-3">
+<div class="panel">
+<div class="panel-body">
 
+<img alt="" class="thumbnail" src="${pageContext.request.contextPath }/resources/${bb.bimgName }" height="200px" width="200px" style="border: 1px solid ; padding : 10px;"/>
 
-<img src="http://placehold.it/256x180" alt="Image"></span>
-<br>
-<p style="border-bottom:solid 1px #eee"></p>
 </div>
 </div>
 
-<br>
-  <div class="container">
+</div>
+</c:forEach>
+</div>
+<!--   <div class="container">
 <h3 style="text-align:center;border-bottom:solid 1px #eee">slider</h3>
  <div class="row">
   <div class="col-md-12 col-sm-12 col-xs-12">
@@ -161,22 +176,14 @@ border-radius: 8px;
  </div>
 </div>
 </div>
-</div> 
+</div>  -->
 
 <br>
 <br>
 
 
 
- <script>
-$(document).ready(function() {
-    $('#myCarousel2').carousel({
-    	direction : left
-    	wrap: true
-        interval: 1500
-    })
-});
-</script> 
+
 
 
 <!--  <div class="container">
@@ -219,9 +226,14 @@ $(document).ready(function() {
 
 
 
+<div class="container">
 
+ <footer>
+        <p class="pull-right"><a href="#"><i class="glyphicon glyphicon-circle-arrow-up"></i></a></p>
+        <p>&copy; 2016 Company, Inc. &middot; <a href="#" disabled>Privacy</a> &middot; <a href="#">Terms</a></p>
+      </footer>
+      </div>
 
-</div>
 <script>
 
 $('#myCarousel').carousel({});

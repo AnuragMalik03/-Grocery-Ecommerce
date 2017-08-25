@@ -45,31 +45,31 @@ public class AdminController {
 	
 	@RequestMapping(value="/savecat" , method=RequestMethod.POST)
 	@Transactional
-	public ModelAndView saveCategory(@RequestParam("cid") int cid, @RequestParam("name")  String  name ){
+	public ModelAndView saveCategory(@RequestParam("name")  String  name ){
 		
 		ModelAndView mav = new ModelAndView();
 		Category c = new Category();
-		    c.setCid(cid);
 		    c.setName(name);
 		    categoryDaoImpl.insertCategory(c);
-			mav.setViewName("index");
+			mav.setViewName("redirect:/index");
 			return mav;
 		
 	}
 	
 	@RequestMapping(value="/savesupp" , method=RequestMethod.POST)
-	public ModelAndView saveSupplier(@RequestParam("sid") int sid, @RequestParam("supplierName")  String  name ){
+	@Transactional
+	public ModelAndView saveSupplier(@RequestParam("supplierName")  String  name ){
 		
 		ModelAndView mav = new ModelAndView();
 		Supplier ss = new Supplier();
-		    ss.setSid(sid);
 		    ss.setSupplierName(name);
 		    supplierDaoImpl.insertSupplier(ss);
-			mav.setViewName("index");
+			mav.setViewName("redirect:/index");
 			return mav;
 		
 	}
 	@RequestMapping(value="/savebrand" , method=RequestMethod.POST)
+	@Transactional
 	public String saveBrand(HttpServletRequest request , @RequestParam("file") MultipartFile file){
 		
 		Brand brand=  new Brand();
@@ -99,7 +99,7 @@ public class AdminController {
 		}
 		
 		
-		return "index";
+		return "redirect:/index";
 		
 	}
 	/*@RequestMapping(value="/savebrand" , method=RequestMethod.POST)
@@ -154,7 +154,7 @@ public class AdminController {
 		}
 		
 		
-		return "index";
+		return "redirect:/index";
 		
 	}
 	
@@ -171,7 +171,7 @@ public class AdminController {
 	@RequestMapping("/deleteProduct/{id}")
 	public String delete(@PathVariable("id") int pid){
 		productDaoImpl.deleteProduct(pid);
-		return "redirect:/productList?del";
+		return "redirect:/admin/productList?del";
 	}
 	
 	@RequestMapping("/updateProduct")
@@ -199,6 +199,7 @@ public class AdminController {
 		String pPrice = request.getParameter("pPrice");
 		String pStock = request.getParameter("pStock");
 		String pDesc = request.getParameter("pDescription");
+		
 		
 		Product prod2=  new Product();
 		prod2.setId(pid);

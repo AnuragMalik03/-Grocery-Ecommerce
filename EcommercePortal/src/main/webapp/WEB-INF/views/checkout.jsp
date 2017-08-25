@@ -5,15 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-     <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script> -->
-   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-     <script src="assets/js/jquery.js"></script>
-   <script src="assets/js/jquery.min.js"></script> 
+
+  <%@ include file="header.jsp" %>
 
 <title>Cart</title>
 <script type="text/javascript">
@@ -125,13 +118,11 @@ function clickCod(){
 
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
 
-<br>
-<br>
-<br>  
+
+
                     
-<div class="col-md-12  col-sm-12  col-xs-12 " style="background:#fff; padding:30px;">
+<div class="col-md-12  col-sm-12  col-xs-12 " style="background:#fff; padding:90px 30px 30px 30px;">
 
             
                         
@@ -157,10 +148,10 @@ function clickCod(){
               <input type="text" name="first" id="s1" placeholder="First Name" value="${user.name }" class="form-control">
             </div>
 
-             <label class="col-sm-2 control-label" for="textinput">Last Name</label>
+           <!--   <label class="col-sm-2 control-label" for="textinput">Last Name</label>
             <div class="col-sm-4">
               <input type="text" name="last" placeholder="Last Name"  class="form-control">
-            </div>
+            </div> -->
           </div> 
 
           <!-- Text input-->
@@ -248,10 +239,10 @@ function clickCod(){
               <input type="text" name="sname" id="c1" placeholder="First Name" class="form-control" required>
             </div>
 
-            <label class="col-sm-2 control-label" for="textinput">Last Name</label>
+            <!-- <label class="col-sm-2 control-label" for="textinput">Last Name</label>
             <div class="col-sm-4">
               <input type="text" name="slast" placeholder="Last Name" class="form-control">
-            </div>
+            </div> -->
           </div>
 
         
@@ -365,7 +356,7 @@ function clickCod(){
 <input type="hidden" name="price"  class="form-control" >
 <input type="hidden" name="description"  class="form-control" >
 <input type="hidden" name="cid"  class="form-control" >
-<input type="hidden" name="cid"  class="form-control" >
+
 
 <button  type="submit" class="btn btn-success btn-lg btn-block" role="submit">Continue..</button>
 
@@ -376,6 +367,11 @@ function clickCod(){
    
     
  </div>
+ <script type="text/javascript">
+ 
+
+ 
+ </script>
     
 </body>
 </html>

@@ -214,10 +214,10 @@ public ModelAndView saveAddress(HttpServletRequest req ){
 	for (Cart cartItem : cart) {
 
 		System.out.println("inside forEach loop");
-		
 		int pid = cartItem.getCartProductId();
+		
 		System.out.println("after getting cart product id for a particular product");
-		Product prod = productDaoImpl.findById(pid) ;
+		Product prod = productDaoImpl.findprodById(pid) ;
 		System.out.println("after getting pid from product table ");
 		int stock = prod.getStock();
 		System.out.println("after getting stock from product table");

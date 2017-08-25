@@ -54,12 +54,12 @@ public List<Product> retrieve(){
 		 session.beginTransaction();
 		 p= session.get(Product.class, pid);
 		 session.getTransaction().commit();
-		 session.close();
+		 
 	} catch (HibernateException ex) {
 		
 		ex.printStackTrace();
 		session.getTransaction().rollback();
-		session.close();
+		
 	}
 	 
 	 return p;
@@ -96,5 +96,25 @@ System.out.println("inside update product 1");
 	 System.out.println("inside update product last ");
 
 	  
+ }
+ 
+ public Product findprodById(int pid){
+	 Session session = sessionFactory.openSession();
+	 Product p=null;
+	 
+	 try {
+		 session.beginTransaction();
+		 p= session.get(Product.class, pid);
+		 session.getTransaction().commit();
+		 session.close();
+	} catch (HibernateException ex) {
+		
+		ex.printStackTrace();
+		session.getTransaction().rollback();
+		 session.close();
+	}
+	 
+	 return p;
+	 
  }
 }

@@ -166,11 +166,20 @@ body
             <div class="form-box">
                 <form  action="${pageContext.request.contextPath }/SecurityAnswer" class="form-signin" method="post" >
                 <span id="reauth-email" class="reauth-email"></span>
+                
                 <label> Email Id</label>
+                <div class="input-group">
                     <input name="username" type="text" id="username" placeholder="Enter Email" value="" required/>
-                                    
-                    <button class="btn btn-info btn-block login" type="submit">Next</button>
+                  <span class="input-group-btn">
+                      <button class="btn btn-info btn-block" type="submit">Go!</button>
+                  </span>
+      </div>
+                   <!--  <button class="btn btn-info btn-block login" type="submit">Next</button> -->
                    
+                   
+     
+     
+    
                 </form>
             </div>
         </div>
