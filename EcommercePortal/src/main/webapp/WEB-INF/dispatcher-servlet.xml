@@ -15,7 +15,7 @@ https://www.springframework.org/context/spring-context.xsd" >
 <context:component-scan base-package="com.controller"/>
 <context:component-scan base-package="com.niit.*"/>
 
-<mvc:resources mapping="/resources/**"  location ="/assets/"/>
+<mvc:resources mapping="/resources/**"  location ="/resources/"/>
 
 
 
